@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: underline;
+  color: blue;
+}
+
+a.a-button {
+  @apply px-1 py-0.5;
+  font-size: 0.8rem;
+  text-decoration: none;
+  outline: gray 1px solid;
+  color: #696969;
+}
+
+
+body {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  background-color: aliceblue;
+}
+#app {
+  width: fit-content;
+  background-color: white;
+  padding: 0.2rem 1rem;
+  border-radius: 0.25rem;
+  
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+h3 {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+ul, ol, menu {
+  list-style: disc;
+  list-style-position: inside;
+}
+
+.section {
+  /* outline: 1px solid black; */
+  padding: 0.125 0.25rem;
+  border-radius: 0.125rem;
+  max-width: 51rem;
+  flex-wrap: wrap;
+}
