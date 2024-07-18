@@ -83,7 +83,7 @@
     <ResearchProjectEntry
       title="HINTs: Sensemaking on large collections of documents with Hypergraph visualization and Intelligent agents"
       authors={["Sam Yu-Te Lee", "Kwan-Liu Ma"]}
-      publication="IEEE TVCG, 2024, under review"
+      publication="under review"
       links={[
         ["PDF", "https://arxiv.org/abs/2403.02752"],
         ["Code", "https://github.com/SamLee-dedeboy/HINTs"],
