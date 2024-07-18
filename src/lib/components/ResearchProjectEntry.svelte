@@ -15,7 +15,7 @@
     .join(", ");
 </script>
 
-<div class="flex max-h-[10rem]">
+<div class="flex">
   {#if teaser_path}
     <img src={teaser_path} alt="teaser" class="max-w-[15rem] max-h-full" />
   {/if}
