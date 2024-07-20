@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { slide } from "svelte/transition";
   import EducationEntry from "../components/EducationEntry.svelte";
 
   /** define section coordinates */
@@ -77,6 +78,40 @@
         address="Nanjing, Jiangsu, China"
         time_period="Sept 2016 &#8212 June 2020"
       ></EducationEntry>
+    </div>
+    <div class="show-more-container self-center flex items-center gap-x-1">
+      <div
+        tabindex="0"
+        role="button"
+        class=" outline outline-gray-400 outline-1 rounded-sm text-gray-600 italic hover:bg-gray-300 capitalize px-1 py-0.5"
+        on:click={() => {
+          const more_content = document.querySelector(".more-content");
+          more_content?.classList.toggle("hidden");
+          const button = document.querySelector(".show-more-container");
+          if (button) button.style.display = "none";
+          document
+            .querySelector(".education")
+            ?.scrollIntoView({ behavior: "smooth" });
+          setTimeout(() => {
+            document.querySelector(".more-content").style.backgroundColor =
+              "#ececec";
+
+            setTimeout(() => {
+              document.querySelector(".more-content").style.backgroundColor =
+                "white";
+            }, 1000);
+          }, 500);
+        }}
+        on:keyup={() => {}}
+      >
+        show more
+      </div>
+      <span class="text-gray-500 italic text-sm"> (Not Recommended) </span>
+    </div>
+    <div
+      transition:slide
+      class="more-content hidden rounded-md transition-colors"
+    >
       <EducationEntry
         school="Jinling High School (金陵中學)"
         address="Nanjing, Jiangsu, China"
@@ -88,54 +123,47 @@
         address="Nanjing, Jiangsu, China"
         time_period="Sept 2010 &#8212 June 2013"
       ></EducationEntry>
+      <div class="flex flex-col divide-y relative">
+        <span
+          class="font-normal text-[0.8rem] absolute left-[calc(100%+1rem)] top-1/2 w-full"
+          >(Yes I went to three different elementary schools)</span
+        >
+        <EducationEntry
+          school="Nanjing Daguang Road Elementary School (南京市大光路小學)"
+          address="Nanjing, Jiangsu, China"
+          time_period="Sept 2008 &#8212 June 2010"
+        ></EducationEntry>
+        <EducationEntry
+          school="Shanghai United International School (上海協和雙語學校)"
+          address="Shanghai, China"
+          time_period="Sept 2006 &#8212 June 2008"
+        ></EducationEntry>
+        <EducationEntry
+          school="Xinghua Elementary School (興華國小)"
+          address="Taipei, Taiwan"
+          time_period="Sept 2004 &#8212 June 2006"
+        ></EducationEntry>
+        <!-- <h3 class="mr-1">Kindergarten</h3> -->
+        <EducationEntry
+          school="??? Kindergarten"
+          address="Taipei, Taiwan"
+          time_period="rumor has it that I skipped a year in kindergarten"
+        ></EducationEntry>
+      </div>
     </div>
-  </div>
-  <div class="flex flex-col">
-    <!-- <h3 class="mr-1">
-      Elementary School
-    </h3> -->
-    <div class="flex flex-col divide-y relative">
-      <span
-        class="font-normal text-[0.8rem] absolute left-[calc(100%+1rem)] top-1/2 w-full"
-        >(Yes I went to three different elementary schools)</span
-      >
-      <EducationEntry
-        school="Nanjing Daguang Road Elementary School (南京市大光路小學)"
-        address="Nanjing, Jiangsu, China"
-        time_period="Sept 2008 &#8212 June 2010"
-      ></EducationEntry>
-      <EducationEntry
-        school="Shanghai United International School (上海協和雙語學校)"
-        address="Shanghai, China"
-        time_period="Sept 2006 &#8212 June 2008"
-      ></EducationEntry>
-      <EducationEntry
-        school="Xinghua Elementary School (興華國小)"
-        address="Taipei, Taiwan"
-        time_period="Sept 2004 &#8212 June 2006"
-      ></EducationEntry>
-      <!-- <h3 class="mr-1">Kindergarten</h3> -->
-      <EducationEntry
-        school="??? Kindergarten"
-        address="Taipei, Taiwan"
-        time_period="rumor has it that I skipped a year in kindergarten"
-      ></EducationEntry>
-    </div>
-  </div>
-  <!-- <div class="flex flex-col">
+    <!-- <div class="flex flex-col">
     <h3 class="mr-1">My Whole Life</h3>
     <div class="flex flex-wrap">
       <span> -&nbspRaised and Taught beautifully by my parents,&nbsp </span>
       <span> Sept 1997 &#8212 Current </span>
     </div>
   </div> -->
+  </div>
 </div>
 
 <style scoped>
   .education {
     top: v-bind("top_css");
     left: v-bind("left_css");
-  }
-  span {
   }
 </style>

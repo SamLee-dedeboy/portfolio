@@ -63,8 +63,9 @@
 <!-- Major Projects -->
 <div id="projects" class="section projects px-0.5 py-1 gap-y-2">
   <h2 class="section-header">Research Projects</h2>
-  <div class="flex flex-col divide-y">
+  <div class="flex flex-col gap-y-2">
     <ResearchProjectEntry
+      teaser_path="awesum.png"
       title="Towards Dataset-scale and Feature-oriented Evaluation of Text Summarization in Large Language Model Prompts"
       authors={[
         "Sam Yu-Te Lee",
@@ -81,6 +82,7 @@
 
     <!-- Research Projects -->
     <ResearchProjectEntry
+      teaser_path="hints.jpg"
       title="HINTs: Sensemaking on large collections of documents with Hypergraph visualization and Intelligent agents"
       authors={["Sam Yu-Te Lee", "Kwan-Liu Ma"]}
       publication="under review"
@@ -90,6 +92,7 @@
       ]}
     />
     <ResearchProjectEntry
+      teaser_path="nova.png"
       title="NOVA: A visual interface for assessing polarizing media coverage"
       authors={[
         "Keshav Dasu",

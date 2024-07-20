@@ -15,11 +15,20 @@
     .join(", ");
 </script>
 
-<div class="flex">
+<div class="flex gap-x-2 pt-1">
   {#if teaser_path}
-    <img src={teaser_path} alt="teaser" class="max-w-[15rem] max-h-full" />
+    <div
+      class="teaser-container rounded-sm outline-double outline-gray-300 outline-1 relative"
+    >
+      <img src={teaser_path} alt="teaser" class="teaser max-w-[8rem]" />
+      <img
+        src={teaser_path}
+        alt="teaser"
+        class="teaser-large hidden pointer-events-none max-w-[24rem] absolute top-0 -left-2 z-10 outline-1 outline-double outline-black rounded-sm"
+      />
+    </div>
   {/if}
-  <div class="research-project flex flex-col">
+  <div class="research-project flex flex-col border-b border-gray-300">
     <h3>{title}</h3>
     <div class="author">
       {@html highlighted_authors}
@@ -49,6 +58,11 @@
     & .me {
       @apply font-bold;
       color: rgb(232, 160, 15);
+    }
+  }
+  .teaser-container:hover {
+    & .teaser-large {
+      @apply block;
     }
   }
 </style>

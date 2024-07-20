@@ -5,7 +5,7 @@
   // import WorkExperience from "./lib/sections/WorkExperience.svelte";
 </script>
 
-<div class="flex flex-col gap-y-3 items-center justify-center">
+<div class="flex flex-col gap-y-3 justify-center">
   <AboutMyself />
   <MajorProjects />
   <Education />

@@ -69,11 +69,14 @@
         alt="profile"
         class="profile-image-hidden hidden w-40 h-40"
       />
+      <!-- <span class="whitespace-nowrap text-sm text-gray-400 italic"
+        >Sam judging his own intro</span
+      > -->
     </div>
     <div class="max-w-[40rem] flex flex-wrap shrink justify-center">
       <div>
-        I am a phd student at the CS department of University of California,
-        Davis, and a member of the <a
+        I'm Sam Yu-Te Lee! I am a phd student at the CS department of University
+        of California, Davis, and a member of the <a
           target="”_blank”"
           href="https://vidi.cs.ucdavis.edu"
         >
