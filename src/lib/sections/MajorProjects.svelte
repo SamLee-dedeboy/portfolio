@@ -101,6 +101,7 @@
       links={[
         ["PDF", "https://arxiv.org/abs/2403.00334"],
         ["Code", "https://github.com/SamLee-dedeboy/Nova"],
+        ["Demo", "https://samlee-dedeboy.github.io/Nova/"],
       ]}
     />
   </div>
