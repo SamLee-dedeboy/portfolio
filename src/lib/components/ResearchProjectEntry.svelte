@@ -28,7 +28,9 @@
       />
     </div>
   {/if}
-  <div class="research-project flex flex-col border-b border-gray-300">
+  <div
+    class="research-project flex flex-col border-b border-gray-300 justify-between"
+  >
     <h3>{title}</h3>
     <div class="author">
       {@html highlighted_authors}

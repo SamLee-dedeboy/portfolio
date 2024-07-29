@@ -73,7 +73,7 @@
         >Sam judging his own intro</span
       > -->
     </div>
-    <div class="max-w-[40rem] flex flex-wrap shrink justify-center">
+    <div class="max-w-[40rem] flex flex-wrap shrink">
       <div>
         I'm Sam Yu-Te Lee! I am a phd student at the CS department of University
         of California, Davis, and a member of the <a
@@ -103,6 +103,24 @@
             class="check-icon w-4 h-4 hidden"
           />
         </span>
+      </div>
+      <div class="flex gap-x-1">
+        <div>
+          <a href="https://www.linkedin.com/in/sam-ytlee" target="”_blank”"
+            ><img
+              src="linkedin.svg"
+              alt="linkedin"
+              class="outline outline-1 outline-gray-300 shadow-md rounded-sm p-1 hover:bg-gray-200"
+            /></a
+          >
+        </div>
+        <a href="https://github.com/SamLee-dedeboy" target="”_blank”"
+          ><img
+            src="github.svg"
+            alt="github"
+            class="outline outline-1 outline-gray-300 shadow-md rounded-sm p-1 hover:bg-gray-200"
+          /></a
+        >
       </div>
     </div>
   </div>
