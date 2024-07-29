@@ -15,10 +15,10 @@
     .join(", ");
 </script>
 
-<div class="flex gap-x-2 pt-1">
+<div class="content-container flex gap-x-2 gap-y-2 pt-1">
   {#if teaser_path}
     <div
-      class="teaser-container rounded-sm outline-double outline-gray-300 outline-1 relative"
+      class="teaser-container rounded-sm outline-double outline-gray-300 outline-1 relative w-fit"
     >
       <img src={teaser_path} alt="teaser" class="teaser max-w-[8rem]" />
       <img
@@ -65,6 +65,16 @@
   .teaser-container:hover {
     & .teaser-large {
       @apply block;
+    }
+  }
+  @media (max-width: 640px) {
+    .content-container {
+      @apply flex-col;
+    }
+  }
+  .teaser-container:hover {
+    & .teaser-large {
+      @apply hidden;
     }
   }
 </style>

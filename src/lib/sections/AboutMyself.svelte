@@ -57,7 +57,7 @@
 
 <div class="section myself">
   <h2 class="section-header">About Myself</h2>
-  <div class="flex gap-x-2">
+  <div class="content-container flex gap-x-2">
     <div class="profile-image-container w-40 h-40 shrink-0">
       <img
         src="profile_image.jpg"
@@ -73,7 +73,7 @@
         >Sam judging his own intro</span
       > -->
     </div>
-    <div class="max-w-[40rem] flex flex-wrap shrink">
+    <div class="max-w-[40rem] flex flex-wrap shrink gap-y-1 gap-x-1">
       <div>
         I'm Sam Yu-Te Lee! I am a phd student at the CS department of University
         of California, Davis, and a member of the <a
@@ -150,6 +150,12 @@
     }
     & .check-icon {
       display: inline;
+    }
+  }
+  @media (max-width: 640px) {
+    .content-container {
+      flex-direction: column;
+      row-gap: 0.25rem;
     }
   }
 </style>
