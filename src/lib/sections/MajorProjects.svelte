@@ -62,7 +62,7 @@
 
 <!-- Major Projects -->
 <div id="projects" class="section projects px-0.5 py-1 gap-y-2">
-  <h2 class="section-header">Research Projects</h2>
+  <h2 class="section-header">Publications</h2>
   <div class="flex flex-col gap-y-2">
     <ResearchProjectEntry
       teaser_path="awesum.png"
@@ -75,7 +75,7 @@
       ]}
       publication="IEEE VIS, 2024, to appear"
       links={[
-        ["PDF", "https://arxiv.org/abs/2407.12192"],
+        ["PDF", "https://ieeexplore.ieee.org/document/10669798"],
         ["Code", "https://github.com/SamLee-dedeboy/Awesum"],
       ]}
     />
@@ -85,7 +85,7 @@
       teaser_path="hints.jpg"
       title="HINTs: Sensemaking on large collections of documents with Hypergraph visualization and Intelligent agents"
       authors={["Sam Yu-Te Lee", "Kwan-Liu Ma"]}
-      publication="under review"
+      publication="TVCG, to appear"
       links={[
         ["PDF", "https://arxiv.org/abs/2403.02752"],
         ["Code", "https://github.com/SamLee-dedeboy/HINTs"],
@@ -110,7 +110,7 @@
   </div>
   <!-- Other Projects -->
   <div class="flex flex-col">
-    <h2 class="border-b-0">Other Projects</h2>
+    <h2 class="border-b-0">Projects</h2>
     <div class="flex flex-col divide-y">
       <div class="other-project">
         <h3>VisEngineering Guide</h3>
