@@ -77,6 +77,7 @@
       links={[
         ["PDF", "https://ieeexplore.ieee.org/document/10669798"],
         ["Code", "https://github.com/SamLee-dedeboy/Awesum"],
+        ["Video", "https://youtu.be/J1vw5pE9J-I"],
       ]}
     />
 
@@ -87,8 +88,9 @@
       authors={["Sam Yu-Te Lee", "Kwan-Liu Ma"]}
       publication="TVCG, to appear"
       links={[
-        ["PDF", "https://arxiv.org/abs/2403.02752"],
+        ["PDF", "https://doi.org/10.1109/TVCG.2024.3459961"],
         ["Code", "https://github.com/SamLee-dedeboy/HINTs"],
+        ["Video", "https://youtu.be/MHhZQ4C2lFY"],
       ]}
     />
     <ResearchProjectEntry
@@ -104,6 +106,7 @@
       links={[
         ["PDF", "https://arxiv.org/abs/2403.00334"],
         ["Code", "https://github.com/SamLee-dedeboy/Nova"],
+        ["Video", "https://youtu.be/8PsQjWpT3OE"],
         ["Demo", "https://samlee-dedeboy.github.io/Nova/"],
       ]}
     />
