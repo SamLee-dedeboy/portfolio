@@ -73,7 +73,7 @@
         "Dongyu Liu",
         "Kwan-Liu Ma",
       ]}
-      publication="IEEE VIS, 2024, to appear"
+      publication="IEEE VIS, 2024"
       links={[
         ["PDF", "https://ieeexplore.ieee.org/document/10669798"],
         ["Code", "https://github.com/SamLee-dedeboy/Awesum"],
@@ -86,7 +86,7 @@
       teaser_path="hints.jpg"
       title="HINTs: Sensemaking on large collections of documents with Hypergraph visualization and Intelligent agents"
       authors={["Sam Yu-Te Lee", "Kwan-Liu Ma"]}
-      publication="TVCG, to appear"
+      publication="IEEE Transactions on Visualization and Computer Graphics (TVCG)"
       links={[
         ["PDF", "https://doi.org/10.1109/TVCG.2024.3459961"],
         ["Code", "https://github.com/SamLee-dedeboy/HINTs"],
