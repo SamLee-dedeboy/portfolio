@@ -103,6 +103,13 @@
             class="check-icon w-4 h-4 hidden"
           />
         </span>
+        <div class="mt-1 font-semibold">
+          I am looking for internship positions for summer 2025. My recent works
+          have been around human-AI collaboration and large language models, and
+          have led multiple projects on this subject. If your organization is
+          seeking a self-motivated and collaborative intern, I’d love to
+          connect!
+        </div>
       </div>
       <div class="flex gap-x-1">
         <div>
