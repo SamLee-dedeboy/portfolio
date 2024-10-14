@@ -86,7 +86,7 @@
       teaser_path="hints.jpg"
       title="HINTs: Sensemaking on large collections of documents with Hypergraph visualization and Intelligent agents"
       authors={["Sam Yu-Te Lee", "Kwan-Liu Ma"]}
-      publication="IEEE Transactions on Visualization and Computer Graphics (TVCG)"
+      publication="IEEE Transactions on Visualization and Computer Graphics (TVCG), September 2024"
       links={[
         ["PDF", "https://doi.org/10.1109/TVCG.2024.3459961"],
         ["Code", "https://github.com/SamLee-dedeboy/HINTs"],
