@@ -75,17 +75,28 @@
     </div>
     <div class="max-w-[40rem] flex flex-wrap shrink gap-y-1 gap-x-1">
       <div>
-        I'm Sam Yu-Te Lee! I am a phd student at the CS department of University
-        of California, Davis, and a member of the <a
-          target="”_blank”"
-          href="https://vidi.cs.ucdavis.edu"
+        I am a PhD <span class="line-through relative"
+          >student <span class="absolute bottom-full left-1/2 -translate-x-1/2"
+            >Candidate <span
+              class="absolute bottom-1/2 left-[105%] text-[0.7rem] text-gray-600"
+              >11/15/2024</span
+            ></span
+          ></span
         >
-          VIDI Lab</a
-        >, advised by
+        at the CS department of University of California, Davis, and a member of
+        the
+        <a target="”_blank”" href="https://vidi.cs.ucdavis.edu"> VIDI Lab</a>,
+        advised by
         <a target="”_blank”" href="https://web.cs.ucdavis.edu/~ma/">
           Prof. Kwan-Liu Ma</a
         >. I am interested in Visual Text Analytics and Human-Computer
-        Interaction. The best way to reach me is through email:
+        Interaction.
+        <span class="font-semibold italic"
+          >More specifically, I investigate visualization and interface designs
+          for data novices to do text analytics with Large Language Models.
+        </span>
+        <br />
+        The best way to reach me is through email:
         <span
           class="copy-email inline-flex items-center gap-x-1 bg-stone-100 outline outline-1 outline-gray-100 rounded-md px-0.5 hover:bg-green-100"
           tabindex="0"
@@ -103,12 +114,13 @@
             class="check-icon w-4 h-4 hidden"
           />
         </span>
-        <div class="mt-1 font-semibold">
-          I am looking for internship positions for summer 2025. My recent works
-          have been around human-AI collaboration and large language models, and
-          have led multiple projects on this subject. If your organization is
-          seeking a self-motivated and collaborative intern, I’d love to
-          connect!
+        <div class="mt-5 italic text-gray-700">
+          <div class="font-semibold text-[1.2rem]">
+            I am looking for an internship position for summer 2025.
+          </div>
+          My recent works have been around human-AI collaboration and large language
+          models, and have led multiple projects on this subject. If your organization
+          is seeking a self-motivated and collaborative intern, I’d love to connect!
         </div>
       </div>
       <div class="flex gap-x-1">
