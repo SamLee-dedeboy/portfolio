@@ -115,12 +115,11 @@
           />
         </span>
         <div class="mt-5 italic text-gray-700">
-          <div class="font-semibold text-[1.2rem]">
-            I am looking for an internship position for summer 2025.
-          </div>
-          My recent works have been around human-AI collaboration and large language
+          <!-- <div class="font-semibold text-[1.2rem]">
+          </div> -->
+          <!-- My recent works have been around human-AI collaboration and large language
           models, and have led multiple projects on this subject. If your organization
-          is seeking a self-motivated and collaborative intern, I’d love to connect!
+          is seeking a self-motivated and collaborative intern, I’d love to connect! -->
         </div>
       </div>
       <div class="flex gap-x-1">

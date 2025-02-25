@@ -15,10 +15,10 @@
     .join(", ");
 </script>
 
-<div class="content-container flex gap-x-2 gap-y-2 pt-1">
+<div class="content-container flex gap-x-2 gap-y-2 pt-1 items-center">
   {#if teaser_path}
     <div
-      class="teaser-container rounded-sm outline-double outline-gray-300 outline-1 relative w-fit"
+      class="teaser-container rounded-sm outline-double outline-gray-300 outline-1 relative w-fit flex items-center h-fit"
     >
       <img src={teaser_path} alt="teaser" class="teaser max-w-[8rem]" />
       <img

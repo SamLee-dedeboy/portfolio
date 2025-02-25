@@ -65,6 +65,22 @@
   <h2 class="section-header">Publications</h2>
   <div class="flex flex-col gap-y-2">
     <ResearchProjectEntry
+      teaser_path="GreenMine-thumbnail.png"
+      title="Visual Text Mining with Progressive Taxonomy Construction for Environmental Studies"
+      authors={[
+        "Sam Yu-Te Lee",
+        "Cheng-Wei Hung",
+        "Mei-Hua Yuan",
+        "Kwan-Liu Ma",
+      ]}
+      publication="To Appear on IEEE PacificVis 2025"
+      links={[
+        ["PDF", "https://arxiv.org/abs/2502.05731"],
+        ["Code", "https://github.com/SamLee-dedeboy/GreenMine"],
+        ["Video", "https://www.youtube.com/watch?v=5zMf6OQsPqs"],
+      ]}
+    />
+    <ResearchProjectEntry
       teaser_path="awesum.png"
       title="Towards Dataset-scale and Feature-oriented Evaluation of Text Summarization in Large Language Model Prompts"
       authors={[
