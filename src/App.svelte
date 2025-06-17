@@ -9,7 +9,7 @@
   <div class="flex font-semibold text-[2rem] italic text-gray-700 w-full">
     Sam Yu-Te Lee's Portfolio
     <span class="ml-auto right-0 text-sm text-gray-500">
-      Last Updated: 12/10/2024</span
+      Last Updated: 06/16/2025</span
     >
   </div>
   <AboutMyself />

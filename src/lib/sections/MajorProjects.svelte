@@ -65,6 +65,24 @@
   <h2 class="section-header">Publications</h2>
   <div class="flex flex-col gap-y-2">
     <ResearchProjectEntry
+      teaser_path="VIDEE.png"
+      title="VIDEE: Visual and Interactive Decomposition, Execution, and Evaluation of Text Analytics with Intelligent Agents "
+      authors={[
+        "Sam Yu-Te Lee",
+        "Chengyang Ji",
+        "Shicheng Wen",
+        "Lifu Huang",
+        "Dongyu Liu",
+        "Kwan-Liu Ma",
+      ]}
+      publication="arXiv (to appear), June 2025"
+      links={[
+        // ["PDF (TBD)", "to appear"],
+        ["Code", "https://github.com/SamLee-dedeboy/VIDEE"],
+        ["Video", "https://youtu.be/KU6skwWgwyU"],
+      ]}
+    />
+    <ResearchProjectEntry
       teaser_path="GreenMine-thumbnail.png"
       title="Visual Text Mining with Progressive Taxonomy Construction for Environmental Studies"
       authors={[
@@ -73,9 +91,9 @@
         "Mei-Hua Yuan",
         "Kwan-Liu Ma",
       ]}
-      publication="To Appear on IEEE PacificVis 2025"
+      publication="PacificVis, 2025"
       links={[
-        ["PDF", "https://arxiv.org/abs/2502.05731"],
+        ["PDF", "https://ieeexplore.ieee.org/document/11021058"],
         ["Code", "https://github.com/SamLee-dedeboy/GreenMine"],
         ["Video", "https://www.youtube.com/watch?v=5zMf6OQsPqs"],
       ]}
