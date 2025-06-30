@@ -75,9 +75,9 @@
         "Dongyu Liu",
         "Kwan-Liu Ma",
       ]}
-      publication="arXiv (to appear), June 2025"
+      publication="arXiv, June 2025"
       links={[
-        // ["PDF (TBD)", "to appear"],
+        ["PDF", "https://arxiv.org/abs/2506.21582"],
         ["Code", "https://github.com/SamLee-dedeboy/VIDEE"],
         ["Video", "https://youtu.be/KU6skwWgwyU"],
       ]}
