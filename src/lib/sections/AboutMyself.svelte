@@ -116,8 +116,11 @@
         </span>
         <div class="mt-5 italic text-gray-700">
           <div class="font-semibold text-[1.0rem]">
-            (Currently working as a UX Research Intern at Microsoft. Welcome to
-            Connect!)
+            <!-- (Currently working as a UX Research Intern at Microsoft. Welcome to
+            Connect!) -->
+            I will be presenting at VIS 2025 on our TVCG paper "HINTs: Sensemaking
+            on large collections of documents with Hypergraph visualization and Intelligent
+            agents".
           </div>
         </div>
       </div>
