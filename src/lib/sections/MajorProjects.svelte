@@ -1,5 +1,7 @@
 <script lang="ts">
   import ResearchProjectEntry from "../components/ResearchProjectEntry.svelte";
+  import ExpandableProject from "../components/ExpandableProject.svelte";
+  import JustTransition from "./JustTransition.svelte";
 
   /** define section coordinates */
   const top = -500 * 3;
@@ -146,9 +148,41 @@
     />
   </div>
   <!-- Other Projects -->
-  <div class="flex flex-col">
+  <div class="flex flex-col mt-4">
     <h2 class="border-b-0">Projects</h2>
     <div class="flex flex-col divide-y">
+      <!-- <div class="other-project">
+        <div class="flex gap-x-2">
+          <a
+            href="https://delta-just-transitions-ucdavis.hub.arcgis.com/"
+            target="_blank"
+          >
+            <img
+              src="JT.png"
+              alt="Just Transition - TEMP MARKER"
+              class="h-[6rem] w-auto mr-3 rounded-md object-contain"
+            />
+          </a>
+          <div class="flex flex-col mt-2">
+            <h3>Just Transition in the Delta - COMPONENT VERSION</h3>
+            <div class="text-gray-500">
+              Investigating adaptation strategies in the Sacramento-San Joaquin
+              Delta under conditions of drought, salinity and sea-level rise
+              <div class="links inline-flex ml-2">
+                <a
+                  target="”_blank”"
+                  class="a-button"
+                  href="https://samlees-organization.gitbook.io/visengineeringguide/"
+                  >Page</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div class="other-project">
+        <JustTransition />
+      </div>
       <div class="other-project">
         <h3>VisEngineering Guide</h3>
         <div class="text-gray-500">
