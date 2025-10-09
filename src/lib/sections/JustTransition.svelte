@@ -14,18 +14,6 @@
     slot="expandedContent"
     class="flex flex-col border-t border-gray-200 text-sm"
   >
-    <div>
-      <h3 class="text-sm">
-        Latest News:
-        <p class="ml-2">
-          - We will be holding an exhibition at <a
-            href="https://www.sfestuary.org/state-of-the-estuary-conference/"
-            >State of the Estuary Conference</a
-          >
-          in San Francisco on October 27-29, 2025!
-        </p>
-      </h3>
-    </div>
     <div class="mt-2">
       <div class="text-sm italic">Past Events:</div>
       <div class="flex flex-col divide-y gap-y-2">

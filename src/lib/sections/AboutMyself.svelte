@@ -115,12 +115,36 @@
           />
         </span>
         <div class="mt-5 italic text-gray-700">
-          <div class="font-semibold text-[1.0rem]">
+          <div class="font-semibold text-[1.0rem] divide-y">
             <!-- (Currently working as a UX Research Intern at Microsoft. Welcome to
             Connect!) -->
-            I will be presenting at VIS 2025 on our TVCG paper "HINTs: Sensemaking
-            on large collections of documents with Hypergraph visualization and Intelligent
-            agents".
+            <p>Recent News:</p>
+            <p class="ml-2">
+              <span class="text-sm text-gray-500"> [Nov 2025] </span>
+              I will be presenting at
+              <strong> VIS 2025 </strong>
+              on our TVCG paper
+              <a
+                class="text-sm"
+                target="_blank"
+                href="https://doi.org/10.1109/TVCG.2024.3459961"
+                >"HINTs: Sensemaking on large collections of documents with
+                Hypergraph visualization and Intelligent agents".
+              </a>
+            </p>
+            <p class="ml-2">
+              <span class="text-sm text-gray-500"> [Oct 2025] </span>
+              We will participate in an exhibition at
+              <a
+                href="https://www.sfestuary.org/state-of-the-estuary-conference/"
+                >State of the Estuary Conference</a
+              >
+              in San Francisco on October 27-29, 2025!
+              <span class="italic text-sm text-gray-600">
+                (Session: Transitions in the Delta: Exploring Adaptation and
+                Salinity Management Through Participatory Scenario Planning)
+              </span>
+            </p>
           </div>
         </div>
       </div>
@@ -139,6 +163,15 @@
             src="github.svg"
             alt="github"
             class="outline outline-1 outline-gray-300 shadow-md rounded-sm p-1 hover:bg-gray-200"
+          /></a
+        >
+        <a
+          href="https://scholar.google.com/citations?user=t3aBBfAAAAAJ&hl=en&oi=sra"
+          target="”_blank”"
+          ><img
+            src="Google_Scholar_logo.svg"
+            alt="Google Scholar"
+            class="w-8 h-8 outline outline-1 outline-gray-300 shadow-md rounded-sm p-1 hover:bg-gray-200"
           /></a
         >
       </div>
