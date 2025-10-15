@@ -67,6 +67,23 @@
   <h2 class="section-header">Publications</h2>
   <div class="flex flex-col gap-y-2">
     <ResearchProjectEntry
+      teaser_path="VizCopilot.png"
+      title="VizCopilot: Fostering Appropriate Reliance on Enterprise Chatbots with Context Visualization"
+      authors={[
+        "Sam Yu-Te Lee",
+        "Jingya Chen",
+        "Albert Calzaretto",
+        "Richard Lee",
+        "Alice Ferng",
+        "Mihaela Vorvoreanu",
+      ]}
+      publication="arXiv, Oct 2025"
+      links={[
+        ["PDF", "https://arxiv.org/abs/2510.11954"],
+        // ["Video", "https://youtu.be/KU6skwWgwyU"],
+      ]}
+    />
+    <ResearchProjectEntry
       teaser_path="VIDEE.png"
       title="VIDEE: Visual and Interactive Decomposition, Execution, and Evaluation of Text Analytics with Intelligent Agents "
       authors={[
