@@ -21,7 +21,7 @@
         <img
           src={imageSrc}
           alt={imageAlt}
-          class="h-[6rem] w-auto mr-3 rounded-md object-contain"
+          class="w-[18rem] h-auto mr-3 rounded-md object-contain"
         />
       </a>
     {:else}

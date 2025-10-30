@@ -2,6 +2,7 @@
   import ResearchProjectEntry from "../components/ResearchProjectEntry.svelte";
   import ExpandableProject from "../components/ExpandableProject.svelte";
   import JustTransition from "./JustTransition.svelte";
+  import COEQWAL from "./COEQWAL.svelte";
 
   /** define section coordinates */
   const top = -500 * 3;
@@ -199,6 +200,9 @@
       </div> -->
       <div class="other-project">
         <JustTransition />
+      </div>
+      <div class="other-project">
+        <COEQWAL />
       </div>
       <div class="other-project">
         <h3>VisEngineering Guide</h3>
