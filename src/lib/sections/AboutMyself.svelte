@@ -134,6 +134,12 @@
             </p>
             <p class="ml-2">
               <span class="text-sm text-gray-500"> [Oct 2025] </span>
+              <a
+                class="text-sm"
+                target="_black"
+                href="https://samlee-dedeboy.github.io/JT_dashboard/"
+                >Live Demo</a
+              >
               We will participate in an exhibition at
               <a
                 href="https://www.sfestuary.org/state-of-the-estuary-conference/"
@@ -148,7 +154,7 @@
           </div>
         </div>
       </div>
-      <div class="flex gap-x-1">
+      <div class="flex gap-x-1 mt-1">
         <div>
           <a href="https://www.linkedin.com/in/sam-ytlee" target="”_blank”"
             ><img
