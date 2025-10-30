@@ -75,16 +75,8 @@
     </div>
     <div class="max-w-[40rem] flex flex-wrap shrink gap-y-1 gap-x-1">
       <div>
-        I am a PhD <span class="line-through relative"
-          >student <span class="absolute bottom-full left-1/2 -translate-x-1/2"
-            >Candidate <span
-              class="absolute bottom-1/2 left-[105%] text-[0.7rem] text-gray-600"
-              >11/15/2024</span
-            ></span
-          ></span
-        >
-        at the CS department of University of California, Davis, and a member of
-        the
+        I am a PhD candidate at the CS department of University of California,
+        Davis, and a member of the
         <a target="”_blank”" href="https://vidi.cs.ucdavis.edu"> VIDI Lab</a>,
         advised by
         <a target="”_blank”" href="https://web.cs.ucdavis.edu/~ma/">

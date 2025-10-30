@@ -11,7 +11,7 @@
       Sam Yu-Te Lee's Portfolio
     </h1>
     <span class="ml-auto right-0 text-sm text-gray-500">
-      Last Updated: 10/09/2025</span
+      Last Updated: 10/30/2025</span
     >
   </header>
 
