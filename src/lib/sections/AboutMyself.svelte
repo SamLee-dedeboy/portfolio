@@ -90,7 +90,7 @@
         <br />
         The best way to reach me is through email:
         <span
-          class="copy-email inline-flex items-center gap-x-1 bg-stone-100 outline outline-1 outline-gray-100 rounded-md px-0.5 hover:bg-green-100"
+          class="copy-email inline-flex items-center gap-x-1 rounded-md px-1"
           tabindex="0"
           role="button"
           on:click={() => {
@@ -99,12 +99,35 @@
           on:keyup={() => {}}
         >
           ytlee@ucdavis.edu
-          <img src="copy.svg" alt="copy" class="not-check-icon w-4 h-4" />
-          <img
-            src="copy-check.svg"
-            alt="copy"
+          <svg
+            class="not-check-icon w-4 h-4"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+          </svg>
+          <svg
             class="check-icon w-4 h-4 hidden"
-          />
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="m12 15 2 2 4-4" />
+            <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+          </svg>
         </span>
         <div class="mt-5 italic" style="color: var(--text-1)">
           <div class="font-semibold text-[1.0rem] divide-y">
@@ -197,6 +220,18 @@
     & .profile-image-primary {
       display: none;
     }
+  }
+
+  .copy-email {
+    color: var(--text-1);
+    background: color-mix(in srgb, var(--text-1) 10%, transparent);
+    outline: 1px solid color-mix(in srgb, var(--text-1) 25%, transparent);
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .copy-email:hover {
+    background: color-mix(in srgb, var(--text-1) 18%, transparent);
   }
 
   .copy-email:focus {

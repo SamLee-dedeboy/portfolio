@@ -20,7 +20,9 @@ export const THEMES: ThemeDef[] = [
 function getDefaultTheme(): Theme {
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
   const scheme = prefersDark ? 'dark' : 'light'
-  return THEMES.find(t => t.scheme === scheme)?.name ?? 'black'
+  const candidates = THEMES.filter(t => t.scheme === scheme)
+  if (candidates.length === 0) return 'black'
+  return candidates[Math.floor(Math.random() * candidates.length)].name
 }
 
 function createThemeStore() {

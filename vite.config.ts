@@ -15,6 +15,12 @@ function getLastCommitDate(): string {
 export default defineConfig({
   plugins: [svelte()],
   base: '/portfolio/',
+  server: {
+    hmr: {
+      protocol: 'ws',
+      host: 'localhost',
+    },
+  },
   define: {
     __LAST_UPDATED__: JSON.stringify(getLastCommitDate()),
   },

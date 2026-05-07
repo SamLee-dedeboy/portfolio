@@ -29,7 +29,7 @@
   --text-1: #FFFFFF;
   --text-2: #E0E0E0;
   --text-3: #C0C6CA;
-  --text-link: #4bbdff;
+  --text-link: #d8b904;
   --bg-surface: var(--bg-dark);
 }
 
@@ -81,11 +81,11 @@
 [data-theme="slate"] {
   color-scheme: dark;
   --theme-color: #1a2030;
-  --pair-color:  #7eb8e6;
+  --pair-color:  #d8b904;
   --text-1: #edf2f7;
   --text-2: #c8d5e3;
   --text-3: #8fa4b8;
-  --text-link: #7eb8e6;
+  --text-link: #d8b904;
   --bg-surface: #242d42;
 }
 
@@ -107,6 +107,6 @@
   --text-1: #fdf2f8;
   --text-2: #e8c8d8;
   --text-3: #b090a0;
-  --text-link: #7eb8e6;
+  --text-link: #d8b904;
   --bg-surface: #3d263c;
 }
