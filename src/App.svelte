@@ -10,8 +10,8 @@
 
 <ThemeToggler />
 <div class="flex flex-col gap-y-3 justify-center">
-  <header class="flex flex-wrap items-center gap-y-1 font-semibold w-full">
-    <h1 class="text-[1.4rem] sm:text-[2rem] font-semibold">
+  <header class="flex flex-wrap items-center gap-y-1 font-semibold w-full pr-[5rem]">
+    <h1 class="text-[1.4rem] sm:text-[2rem] font-semibold leading-tight">
       Sam (Yu-Te) Lee's Portfolio
     </h1>
     <span

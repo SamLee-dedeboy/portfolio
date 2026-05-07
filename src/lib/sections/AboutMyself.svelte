@@ -58,16 +58,16 @@
 <div class="section myself">
   <h2 class="section-header mb-1">About Myself</h2>
   <div class="content-container flex gap-x-2">
-    <div class="profile-image-container w-40 h-40 shrink-0">
+    <div class="profile-image-container w-32 h-32 sm:w-40 sm:h-40 shrink-0 self-center sm:self-start">
       <img
         src="profile_image.jpg"
         alt="profile"
-        class="profile-image-primary w-40 h-40"
+        class="profile-image-primary w-32 h-32 sm:w-40 sm:h-40"
       />
       <img
         src="profile_image_hidden.jpg"
         alt="profile"
-        class="profile-image-hidden hidden w-40 h-40"
+        class="profile-image-hidden hidden w-32 h-32 sm:w-40 sm:h-40"
       />
       <!-- <span class="whitespace-nowrap text-sm text-gray-400 italic"
         >Sam judging his own intro</span

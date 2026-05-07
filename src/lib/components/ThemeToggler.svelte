@@ -66,8 +66,8 @@
 <style>
   .theme-toggler {
     position: fixed;
-    top: 1rem;
-    right: 1rem;
+    top: 0.5rem;
+    right: 0.5rem;
     z-index: 100;
     display: flex;
     flex-direction: column;
@@ -77,6 +77,13 @@
     border-radius: 0.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     overflow: hidden;
+  }
+
+  @media (min-width: 640px) {
+    .theme-toggler {
+      top: 1rem;
+      right: 1rem;
+    }
   }
 
   .toggle-header {

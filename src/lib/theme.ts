@@ -30,6 +30,8 @@ function createThemeStore() {
 
   function apply(t: Theme) {
     document.documentElement.dataset.theme = t
+    const def = THEMES.find(x => x.name === t)
+    if (def) document.documentElement.dataset.scheme = def.scheme
     set(t)
   }
 

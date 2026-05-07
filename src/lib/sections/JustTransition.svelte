@@ -29,8 +29,8 @@
             </span>
           </div>
 
-          <div class="flex gap-x-2 items-end">
-            <div class="flex flex-col py-1 gap-y-1">
+          <div class="flex flex-col sm:flex-row gap-x-2 sm:items-end">
+            <div class="flex flex-col py-1 gap-y-1 min-w-0">
               <div class="flex gap-x-2">
                 -
                 <span>
@@ -61,13 +61,13 @@
               <img
                 src="hand_drawn_mm.png"
                 alt="hand drawn mental model"
-                class="h-[15rem] rounded-md"
+                class="max-h-[15rem] w-auto max-w-full rounded-md object-contain"
               />
             </div>
             <img
               src="mm.png"
               alt="mental model visualization"
-              class="h-[30rem] mt-2 rounded-md"
+              class="max-h-[30rem] w-auto max-w-full mt-2 rounded-md object-contain"
             />
           </div>
         </div>
