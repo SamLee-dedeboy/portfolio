@@ -183,12 +183,12 @@
           </a>
           <div class="flex flex-col mt-2">
             <h3>Just Transition in the Delta - COMPONENT VERSION</h3>
-            <div class="text-gray-500">
+            <div style="color: var(--text-3)">
               Investigating adaptation strategies in the Sacramento-San Joaquin
               Delta under conditions of drought, salinity and sea-level rise
               <div class="links inline-flex ml-2">
                 <a
-                  target="”_blank”"
+                  target="_blank"
                   class="a-button"
                   href="https://samlees-organization.gitbook.io/visengineeringguide/"
                   >Page</a
@@ -205,14 +205,14 @@
         <COEQWAL />
       </div>
       <div class="other-project">
-        <h3>VisEngineering Guide</h3>
-        <div class="text-gray-500">
+        <h4>VisEngineering Guide</h4>
+        <div style="color: var(--text-3)">
           Open-Source Documentation of best practices in visualization
           engineering
         </div>
         <div class="links flex">
           <a
-            target="”_blank”"
+            target="_blank"
             class="a-button"
             href="https://samlees-organization.gitbook.io/visengineeringguide/"
             >Page</a
@@ -221,16 +221,16 @@
       </div>
 
       <div class="other-project">
-        <h3>
+        <h4>
           Visualizing the career evolution of an individual in the film
           industry.
-        </h3>
-        <div class="text-gray-500">
+        </h4>
+        <div style="color: var(--text-3)">
           Keywords: Scrollytelling, Automatic story generation
         </div>
         <div class="links flex">
           <a
-            target="”_blank”"
+            target="_blank"
             class="a-button"
             href="https://github.com/SamLee-dedeboy/CareerEvolution">Code</a
           >
@@ -238,30 +238,30 @@
       </div>
 
       <div class="other-project">
-        <h3 class="">
+        <h4 class="">
           Evaluating Readability of Graph Layouts with Graph Neural Networks
-        </h3>
-        <div class="text-gray-500">
+        </h4>
+        <div style="color: var(--text-3)">
           Keywords: Graph Layout, Graph Neural Networks, GAE
         </div>
         <div class="links flex">
           <a
-            target="”_blank”"
+            target="_blank"
             class="a-button"
             href="https://github.com/SamLee-dedeboy/graph_layout_GNN">Code</a
           >
         </div>
       </div>
       <div class="other-project">
-        <h3 class="">
+        <h4 class="">
           Evaluating Empty Space Skipping methods in volume rendering
-        </h3>
-        <div class="text-gray-500">
+        </h4>
+        <div style="color: var(--text-3)">
           Keywords: Volume Rendering, Empty Space Skipping
         </div>
         <div class="links flex">
           <a
-            target="”_blank”"
+            target="_blank"
             class="a-button"
             href="https://github.com/SamLee-dedeboy/AdvancedVisPA">Code</a
           >

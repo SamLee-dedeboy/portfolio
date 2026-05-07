@@ -1,3 +1,5 @@
+@import './theme_colors.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,40 +17,49 @@
 
 a {
   text-decoration: underline;
-  color: blue;
+  color: var(--text-link);
 }
 
 a.a-button {
   @apply px-1 py-0.5;
   font-size: 0.8rem;
   text-decoration: none;
-  outline: gray 1px solid;
-  color: #696969;
+  outline: 1px solid;
+  outline-color: #9ca3af;
+  color: var(--text-1)
 }
-
 
 body {
   padding: 1rem;
   display: flex;
   justify-content: center;
-  background-color: aliceblue;
-}
-#app {
-  width: fit-content;
-  background-color: white;
-  padding: 0.2rem 1rem;
-  border-radius: 0.25rem;
-  
+  background-color: var(--theme-color);
+  color: var(--text-1);
 }
 
+#app {
+  width: 100%;
+  max-width: 55rem;
+  background-color: var(--bg-surface);
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+
+h1, h2, h3 {
+  color: var(--pair-color);
+}
 h2 {
   font-weight: 700;
   font-size: 1.3rem;
-  @apply text-gray-800
 }
 h3 {
   font-weight: 600;
   font-size: 1.1rem;
+}
+h4 {
+  font-weight: 500;
+  font-size: 1.05rem;
+  color: var(--text-1);
 }
 ul, ol, menu {
   list-style: disc;
@@ -56,10 +67,33 @@ ul, ol, menu {
 }
 
 .section {
-  /* outline: 1px solid black; */
-  padding: 0.125 0.25rem;
+  padding: 0.125rem 0.25rem;
   border-radius: 0.125rem;
   max-width: 51rem;
   flex-wrap: wrap;
 }
 
+/* ── Dark theme overrides for hardcoded Tailwind color classes ── */
+
+[data-theme="dark"] .text-gray-800 { color: var(--text-1); }
+[data-theme="dark"] .text-gray-700 { color: var(--text-1); }
+[data-theme="dark"] .text-gray-600 { color: var(--text-2); }
+[data-theme="dark"] .text-gray-500 { color: var(--text-3); }
+[data-theme="dark"] .text-gray-400 { color: var(--text-3); }
+
+[data-theme="dark"] .border-gray-300 { border-color: #4a5568; }
+[data-theme="dark"] .border-gray-200 { border-color: #374151; }
+[data-theme="dark"] .outline-gray-400 { outline-color: #4a5568; }
+[data-theme="dark"] .outline-gray-300 { outline-color: #4a5568; }
+[data-theme="dark"] .outline-gray-100 { outline-color: #2d3f52; }
+
+[data-theme="dark"] .bg-stone-100 { background-color: #2d3746; }
+[data-theme="dark"] .hover\:bg-gray-200:hover { background-color: #2d3f52; }
+[data-theme="dark"] .hover\:bg-gray-300:hover { background-color: #374151; }
+[data-theme="dark"] .hover\:bg-green-100:hover { background-color: #1a3a2f; }
+
+[data-theme="dark"] .text-blue-600 { color: var(--text-link); }
+[data-theme="dark"] a.a-button { color: var(--text-3); outline-color: #4a5568; }
+
+[data-theme="dark"] .not-check-icon,
+[data-theme="dark"] .check-icon { filter: invert(1); }

@@ -14,30 +14,30 @@
 </script>
 
 <div class="flex flex-col">
-  <div class="flex gap-x-2">
+  <div class="flex flex-col sm:flex-row gap-x-2 gap-y-2">
     <!-- Image with optional link -->
     {#if link}
-      <a href={link} target="_blank">
+      <a href={link} target="_blank" class="shrink-0">
         <img
           src={imageSrc}
           alt={imageAlt}
-          class="w-[18rem] h-auto mr-3 rounded-md object-contain"
+          class="w-full sm:w-[18rem] h-auto rounded-md object-contain"
         />
       </a>
     {:else}
       <img
         src={imageSrc}
         alt={imageAlt}
-        class="h-[6rem] w-auto mr-3 rounded-md object-contain"
+        class="h-[6rem] w-auto rounded-md object-contain shrink-0"
       />
     {/if}
 
     <div class="flex flex-col mt-0.5 flex-1">
       <div class="flex items-center justify-between">
-        <h3>{title}</h3>
+        <h4>{title}</h4>
       </div>
 
-      <div class="text-gray-500">
+      <div style="color: var(--text-3)">
         {description}
         {#if link}
           <div class="links inline-flex ml-2">
@@ -53,7 +53,7 @@
   </div>
   <button
     on:click={toggleExpanded}
-    class="expand-button mt-2 ml-2 w-fit py-1 px-2 text-blue-600 transition-colors"
+    class="expand-button mt-2 ml-2 w-fit py-1 px-2 transition-colors"
     aria-label={isExpanded ? "Collapse" : "Expand"}
   >
     {isExpanded ? "Hide" : "See more"}
@@ -61,7 +61,7 @@
   {#if isExpanded}
     <slot name="expandedContent">
       <!-- Default content if no slot is provided -->
-      <p class="text-gray-400 italic">No expanded content provided</p>
+      <p class="italic" style="color: var(--text-3)">No expanded content provided</p>
     </slot>
   {/if}
 </div>
@@ -69,6 +69,7 @@
 <style lang="postcss">
   .expand-button {
     @apply text-sm font-mono leading-none cursor-pointer select-none;
+    color: var(--text-link);
   }
 
   .expanded-content {

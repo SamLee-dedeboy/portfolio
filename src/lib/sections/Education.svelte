@@ -83,30 +83,28 @@
       <div
         tabindex="0"
         role="button"
-        class=" outline outline-gray-400 outline-1 rounded-sm text-gray-600 italic hover:bg-gray-300 capitalize px-1 py-0.5"
+        class="show-more-btn outline outline-1 rounded-sm italic capitalize px-1 py-0.5"
         on:click={() => {
           const more_content = document.querySelector(".more-content");
           more_content?.classList.toggle("hidden");
           const button = document.querySelector(".show-more-container");
-          if (button) button.style.display = "none";
+          if (button instanceof HTMLElement) button.style.display = "none";
           document
             .querySelector(".education")
             ?.scrollIntoView({ behavior: "smooth" });
           setTimeout(() => {
-            document.querySelector(".more-content").style.backgroundColor =
-              "#ececec";
-
-            setTimeout(() => {
-              document.querySelector(".more-content").style.backgroundColor =
-                "white";
-            }, 1000);
+            const el = document.querySelector(".more-content");
+            if (el instanceof HTMLElement) {
+              el.style.setProperty("background-color", "var(--bg-page)");
+              setTimeout(() => el.style.removeProperty("background-color"), 1000);
+            }
           }, 500);
         }}
         on:keyup={() => {}}
       >
         show more
       </div>
-      <span class="text-gray-500 italic text-sm"> (Not Recommended) </span>
+      <span class="not-recommended italic text-sm"> (Not Recommended) </span>
     </div>
     <div
       transition:slide
@@ -125,7 +123,7 @@
       ></EducationEntry>
       <div class="flex flex-col divide-y relative">
         <span
-          class="font-normal text-[0.8rem] absolute left-[calc(100%+1rem)] top-1/2 w-full"
+          class="font-normal text-[0.8rem] absolute left-[calc(100%+1rem)] top-1/2 w-full hidden sm:block"
           >(Yes I went to three different elementary schools)</span
         >
         <EducationEntry
@@ -165,5 +163,15 @@
   .education {
     top: v-bind("top_css");
     left: v-bind("left_css");
+  }
+  .show-more-btn {
+    color: var(--text-2);
+    outline-color: var(--text-3);
+  }
+  .show-more-btn:hover {
+    background-color: color-mix(in srgb, var(--text-3) 20%, transparent);
+  }
+  .not-recommended {
+    color: var(--text-3);
   }
 </style>

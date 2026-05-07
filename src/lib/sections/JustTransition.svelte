@@ -20,7 +20,7 @@
         <div
           class="flex flex-col outline outline-2 outline-gray-300 rounded px-2 pb-2 mt-2"
         >
-          <p class="ml-auto right-0 italic text-gray-600 text-xs">June, 2025</p>
+          <p class="ml-auto right-0 italic text-xs" style="color: var(--text-3)">June, 2025</p>
           <div class="font-semibold flex gap-x-2">
             <span>
               We held a second public workshop at the Jean Harvie Community
@@ -55,7 +55,7 @@
                   model using image recognition and visualization tools.
                 </span>
               </div>
-              <p class="italic text-gray-700">
+              <p class="italic" style="color: var(--text-2)">
                 A hand-drawn mental model (not the same as the right one):
               </p>
               <img
@@ -75,7 +75,7 @@
           <div
             class="flex flex-col outline outline-2 outline-gray-300 rounded px-2 py-1 mt-2 gap-y-1"
           >
-            <p class="ml-auto right-0 italic text-gray-600 text-xs">
+            <p class="ml-auto right-0 italic text-xs" style="color: var(--text-3)">
               June, 2024
             </p>
             <div class="font-semibold flex gap-x-2">
@@ -93,15 +93,15 @@
             </div>
             <div class="flex gap-x-2">
               <a
-                target="”_blank”"
+                target="_blank"
                 class="a-button"
                 href="https://samlee-dedeboy.github.io/CaDelta">Live Demo</a
               >
-              <span class="italic text-gray-700 mt-0.5">
+              <span class="italic mt-0.5" style="color: var(--text-2)">
                 (best on 1920x1080 screen)
               </span>
             </div>
-            <span class="italic text-gray-700 mt-2">
+            <span class="italic mt-2" style="color: var(--text-2)">
               Interface Screenshot:
             </span>
             <img src="cadelta.png" alt="CaDelta" class="rounded-md" />

@@ -5,7 +5,12 @@
 </script>
 
 <div class="flex flex-col">
-  <span class="italic">{school}</span>
-  <span class="text-end">{address}</span>
-  <span class="text-end">{time_period}</span>
+  <span class="school italic">{school}</span>
+  <span class="text-end meta">{address}</span>
+  <span class="text-end meta">{time_period}</span>
 </div>
+
+<style>
+  .school { color: var(--text-1); }
+  .meta   { color: var(--text-3); }
+</style>

@@ -2,16 +2,21 @@
   import AboutMyself from "./lib/sections/AboutMyself.svelte";
   import Education from "./lib/sections/Education.svelte";
   import MajorProjects from "./lib/sections/MajorProjects.svelte";
+  import ThemeToggler from "./lib/components/ThemeToggler.svelte";
   // import WorkExperience from "./lib/sections/WorkExperience.svelte";
+
+  const lastUpdated = __LAST_UPDATED__;
 </script>
 
+<ThemeToggler />
 <div class="flex flex-col gap-y-3 justify-center">
-  <header class="flex font-semibold text-[2rem] italic text-gray-700 w-full">
-    <h1 class="text-[2rem] font-semibold italic text-gray-700">
-      Sam Yu-Te Lee's Portfolio
+  <header class="flex flex-wrap items-center gap-y-1 font-semibold w-full">
+    <h1 class="text-[1.4rem] sm:text-[2rem] font-semibold">
+      Sam (Yu-Te) Lee's Portfolio
     </h1>
-    <span class="ml-auto right-0 text-sm text-gray-500">
-      Last Updated: 10/30/2025</span
+    <span
+      class="ml-auto text-xs sm:text-sm not-italic font-normal"
+      style="color: var(--text-3)">Last Updated: {lastUpdated}</span
     >
   </header>
 

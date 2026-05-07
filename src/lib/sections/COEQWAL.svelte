@@ -18,6 +18,6 @@
       We are building a accessible web-based policy analysis tool. The tool
       allows users to explore inequities in current water management strategies.
     </div>
-    <p class="text-gray-600 italic">Ongoing work, to be continued.</p>
+    <p class="italic" style="color: var(--text-2)">Ongoing work, to be continued.</p>
   </div>
 </ExpandableProject>

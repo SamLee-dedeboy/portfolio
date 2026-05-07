@@ -56,7 +56,7 @@
 </script>
 
 <div class="section myself">
-  <h2 class="section-header">About Myself</h2>
+  <h2 class="section-header mb-1">About Myself</h2>
   <div class="content-container flex gap-x-2">
     <div class="profile-image-container w-40 h-40 shrink-0">
       <img
@@ -77,9 +77,9 @@
       <div>
         I am a PhD candidate at the CS department of University of California,
         Davis, and a member of the
-        <a target="”_blank”" href="https://vidi.cs.ucdavis.edu"> VIDI Lab</a>,
+        <a target="_blank" href="https://vidi.cs.ucdavis.edu"> VIDI Lab</a>,
         advised by
-        <a target="”_blank”" href="https://web.cs.ucdavis.edu/~ma/">
+        <a target="_blank" href="https://web.cs.ucdavis.edu/~ma/">
           Prof. Kwan-Liu Ma</a
         >. I am interested in Visual Text Analytics and Human-Computer
         Interaction.
@@ -106,13 +106,15 @@
             class="check-icon w-4 h-4 hidden"
           />
         </span>
-        <div class="mt-5 italic text-gray-700">
+        <div class="mt-5 italic" style="color: var(--text-1)">
           <div class="font-semibold text-[1.0rem] divide-y">
             <!-- (Currently working as a UX Research Intern at Microsoft. Welcome to
             Connect!) -->
             <p>Recent News:</p>
             <p class="ml-2">
-              <span class="text-sm text-gray-500"> [Nov 2025] </span>
+              <span class="text-sm" style="color: var(--text-3)">
+                [Nov 2025]
+              </span>
               I will be presenting at
               <strong> VIS 2025 </strong>
               on our TVCG paper
@@ -125,7 +127,9 @@
               </a>
             </p>
             <p class="ml-2">
-              <span class="text-sm text-gray-500"> [Oct 2025] </span>
+              <span class="text-sm" style="color: var(--text-3)">
+                [Oct 2025]
+              </span>
               <a
                 class="text-sm"
                 target="_black"
@@ -138,7 +142,7 @@
                 >State of the Estuary Conference</a
               >
               in San Francisco on October 27-29, 2025!
-              <span class="italic text-sm text-gray-600">
+              <span class="italic text-sm" style="color: var(--text-2)">
                 (Session: Transitions in the Delta: Exploring Adaptation and
                 Salinity Management Through Participatory Scenario Planning)
               </span>
@@ -148,28 +152,28 @@
       </div>
       <div class="flex gap-x-1 mt-1">
         <div>
-          <a href="https://www.linkedin.com/in/sam-ytlee" target="”_blank”"
+          <a href="https://www.linkedin.com/in/sam-ytlee" target="_blank"
             ><img
               src="linkedin.svg"
               alt="linkedin"
-              class="outline outline-1 outline-gray-300 shadow-md rounded-sm p-1 hover:bg-gray-200"
+              class="bg-white outline outline-1 outline-gray-300 shadow-md rounded-sm p-1 hover:bg-gray-200"
             /></a
           >
         </div>
-        <a href="https://github.com/SamLee-dedeboy" target="”_blank”"
+        <a href="https://github.com/SamLee-dedeboy" target="_blank"
           ><img
             src="github.svg"
             alt="github"
-            class="outline outline-1 outline-gray-300 shadow-md rounded-sm p-1 hover:bg-gray-200"
+            class="bg-white outline outline-1 outline-gray-300 shadow-md rounded-sm p-1 hover:bg-gray-200"
           /></a
         >
         <a
-          href="https://scholar.google.com/citations?user=t3aBBfAAAAAJ&hl=en&oi=sra"
-          target="”_blank”"
+          href="https://scholar.google.com/citations?user=t3aBBfAAAAAJ&amp;hl=en&amp;oi=sra"
+          target="_blank"
           ><img
             src="Google_Scholar_logo.svg"
             alt="Google Scholar"
-            class="w-8 h-8 outline outline-1 outline-gray-300 shadow-md rounded-sm p-1 hover:bg-gray-200"
+            class="bg-white w-8 h-8 outline outline-1 outline-gray-300 shadow-md rounded-sm p-1 hover:bg-gray-200"
           /></a
         >
       </div>

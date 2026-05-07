@@ -15,7 +15,7 @@
     .join(", ");
 </script>
 
-<div class="content-container flex gap-x-2 gap-y-2 pt-1 items-center">
+<div class="content-container flex gap-x-2 gap-y-2 items-center">
   {#if teaser_path}
     <div
       class="teaser-container rounded-sm outline-double outline-gray-300 outline-1 relative w-fit flex items-center h-fit"
@@ -24,21 +24,21 @@
       <img
         src={teaser_path}
         alt="teaser"
-        class="teaser-large hidden pointer-events-none max-w-[24rem] absolute top-0 -left-2 z-10 outline-1 outline-double outline-black rounded-sm"
+        class="teaser-large hidden pointer-events-none max-w-[24rem] absolute top-0 left-0 sm:-left-2 z-10 outline-1 outline-double outline-black rounded-sm"
       />
     </div>
   {/if}
   <div
     class="research-project flex flex-col border-b border-gray-300 justify-between"
   >
-    <h3>{title}</h3>
+    <h4>{title}</h4>
     <div class="author">
       {@html highlighted_authors}
     </div>
     <div class="publication">{publication}</div>
-    <div class="links flex gap-x-1">
+    <div class="links flex gap-x-1 mt-1">
       {#each links as [label, href]}
-        <a target="”_blank”" class="a-button" {href}>{label}</a>
+        <a target="_blank" class="a-button" {href}>{label}</a>
       {/each}
     </div>
   </div>
@@ -46,20 +46,20 @@
 
 <style lang="postcss">
   .research-project {
-    @apply px-1 py-2 max-w-[60rem];
+    @apply px-1 pb-2 max-w-[60rem];
     & h3 {
       @apply italic;
     }
     & .author,
     & .publication {
-      @apply text-gray-500;
+      color: var(--text-3);
     }
     & .publication {
       @apply text-[0.8rem];
     }
     & .me {
       @apply font-bold;
-      color: rgb(232, 160, 15);
+      color: var(--pair-color);
     }
   }
   .teaser-container:hover {
