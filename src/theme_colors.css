@@ -38,7 +38,7 @@
 [data-theme="white"] {
   color-scheme: light;
   --theme-color: #e4f2ff;
-  --pair-color:  var(--black);
+  --pair-color:  var(--blue);
   --text-1: var(--black);
   --text-2: #343C40;
   --text-3: var(--gray);
