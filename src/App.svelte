@@ -26,7 +26,8 @@
     <p>
       Portfolio of Sam Yu-Te Lee (sam yute lee), PhD student and researcher at
       University of California, Davis (UC Davis, UCD). Specializing in Visual
-      Text Analytics, Human-Computer Interaction, and Agentic systems.
+      Text Analytics, Human-Computer Interaction (HCI), Human-AI Interaction,
+      and Agentic systems.
     </p>
   </section>
 

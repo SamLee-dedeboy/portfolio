@@ -81,11 +81,11 @@
         advised by
         <a target="_blank" href="https://web.cs.ucdavis.edu/~ma/">
           Prof. Kwan-Liu Ma</a
-        >. I am interested in Visual Text Analytics and Human-Computer
-        Interaction.
+        >. I am interested in Visual Text Analytics and Human-AI Interaction.
         <span class="font-semibold italic"
-          >More specifically, I investigate visualization and interface designs
-          for data novices to do text analytics with Large Language Models.
+          >More specifically, I design visual tools that help people make use
+          of large amounts of text data, use AI appropriately, and know when AI
+          fails.
         </span>
         <br />
         The best way to reach me is through email:
@@ -136,39 +136,14 @@
             <p>Recent News:</p>
             <p class="ml-2">
               <span class="text-sm" style="color: var(--text-3)">
-                [Nov 2025]
+                [Jun 2026]
               </span>
-              I will be presenting at
-              <strong> VIS 2025 </strong>
-              on our TVCG paper
-              <a
-                class="text-sm"
-                target="_blank"
-                href="https://doi.org/10.1109/TVCG.2024.3459961"
-                >"HINTs: Sensemaking on large collections of documents with
-                Hypergraph visualization and Intelligent agents".
-              </a>
-            </p>
-            <p class="ml-2">
-              <span class="text-sm" style="color: var(--text-3)">
-                [Oct 2025]
-              </span>
-              <a
-                class="text-sm"
-                target="_black"
-                href="https://samlee-dedeboy.github.io/JT_dashboard/"
-                >Live Demo</a
-              >
-              We will participate in an exhibition at
-              <a
-                href="https://www.sfestuary.org/state-of-the-estuary-conference/"
-                >State of the Estuary Conference</a
-              >
-              in San Francisco on October 27-29, 2025!
-              <span class="italic text-sm" style="color: var(--text-2)">
-                (Session: Transitions in the Delta: Exploring Adaptation and
-                Salinity Management Through Participatory Scenario Planning)
-              </span>
+              I will be joining
+              <strong> Microsoft </strong>
+              (Redmond) this summer as an Applied Science Intern, working with
+              <a target="_blank" href="https://www.linkedin.com/in/aferng"
+                >Alice Ferng</a
+              >!
             </p>
           </div>
         </div>

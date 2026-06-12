@@ -68,6 +68,40 @@
   <h2 class="section-header">Publications</h2>
   <div class="flex flex-col gap-y-2">
     <ResearchProjectEntry
+      teaser_path="VibeVisualizing.png"
+      title="Vibe Visualizing: How Visualization Novices Try (and Fail) to Generate and Interpret Visualizations with Conversational AI"
+      authors={[
+        "Sam Yu-Te Lee",
+        "Yun-Hsin Kuo",
+        "Chifang Chou",
+        "Matthew Ward",
+        "Xiwei Xuan",
+        "Kwan-Liu Ma",
+      ]}
+      publication="arXiv, June 2026"
+      links={[
+        ["PDF", "https://arxiv.org/abs/2606.08914"],
+        ["Video", "https://youtu.be/-uiad4dT83c"],
+        ["Website", "https://vibe-visualizing.vercel.app/"],
+      ]}
+    />
+    <ResearchProjectEntry
+      teaser_path="VArify.png"
+      title="VArify: A Visual Analytics System for Verifying Knowledge Enhanced Large Language Model Responses in Food Science"
+      authors={[
+        "Sam Yu-Te Lee",
+        "Yan To Linus Lam",
+        "Manami Nakagawa",
+        "Kwan-Liu Ma",
+      ]}
+      publication="arXiv, June 2026"
+      links={[
+        ["PDF", "https://arxiv.org/abs/2606.10177"],
+        ["Code", "https://github.com/linuslyt/VArify"],
+        ["Video", "https://youtu.be/K3tb-UGmtQY"],
+      ]}
+    />
+    <ResearchProjectEntry
       teaser_path="VizCopilot.png"
       title="VizCopilot: Fostering Appropriate Reliance on Enterprise Chatbots with Context Visualization"
       authors={[
@@ -75,13 +109,14 @@
         "Jingya Chen",
         "Albert Calzaretto",
         "Richard Lee",
+        "Samir Passi",
         "Alice Ferng",
         "Mihaela Vorvoreanu",
       ]}
       publication="arXiv, Oct 2025"
       links={[
         ["PDF", "https://arxiv.org/abs/2510.11954"],
-        // ["Video", "https://youtu.be/KU6skwWgwyU"],
+        ["Video", "https://youtu.be/QeiO71Vvvww"],
       ]}
     />
     <ResearchProjectEntry
