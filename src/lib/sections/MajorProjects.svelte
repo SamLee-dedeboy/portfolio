@@ -134,7 +134,7 @@
       links={[
         ["PDF", "https://arxiv.org/abs/2506.21582"],
         ["Code", "https://github.com/SamLee-dedeboy/VIDEE"],
-        ["Video", "https://youtu.be/KU6skwWgwyU"],
+        ["Video", "https://www.youtube.com/watch?v=vm67gmphnr0"],
       ]}
     />
     <ResearchProjectEntry

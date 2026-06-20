@@ -1,0 +1,3 @@
+[submodule "vectorui-lab/vendor/VectorUI"]
+	path = vectorui-lab/vendor/VectorUI
+	url = https://github.com/SamLee-dedeboy/VectorUI.git
