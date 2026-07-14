@@ -240,6 +240,57 @@
         <COEQWAL />
       </div>
       <div class="other-project">
+        <div class="flex flex-col sm:flex-row gap-x-2 gap-y-2">
+          <a
+            href="https://github.com/SamLee-dedeboy/htmdoc"
+            target="_blank"
+            class="shrink-0"
+          >
+            <img
+              src="htmdoc.png"
+              alt="htmdoc"
+              class="w-full sm:w-[18rem] h-auto rounded-md object-contain"
+            />
+          </a>
+          <div class="flex flex-col mt-0.5 flex-1">
+            <h4>htmdoc</h4>
+            <div style="color: var(--text-3)">
+              Edit any HTML file in your browser like a document. Built for
+              surgical last-touch edits on AI-generated web pages.
+            </div>
+            <ul
+              class="mt-2 flex flex-col gap-y-1 list-disc pl-5 text-sm"
+              style="color: var(--text-3)"
+            >
+              <li>
+                <strong style="color: var(--text-2)">One-line setup</strong> — a
+                single script include or bookmarklet, no build step
+              </li>
+              <li>
+                <strong style="color: var(--text-2)"
+                  >Saves to disk automatically</strong
+                > — every edit writes back to the file, with backups
+              </li>
+              <li>
+                <strong style="color: var(--text-2)">Rich editing</strong> — text
+                formatting, tables, lists, images, and find &amp; replace
+              </li>
+              <li>
+                <strong style="color: var(--text-2)">Version history</strong> —
+                roll back to any earlier version in one click
+              </li>
+            </ul>
+            <div class="links flex" style="margin-top: auto;">
+              <a
+                target="_blank"
+                class="a-button"
+                href="https://github.com/SamLee-dedeboy/htmdoc">Code</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="other-project">
         <h4>VisEngineering Guide</h4>
         <div style="color: var(--text-3)">
           Open-Source Documentation of best practices in visualization
