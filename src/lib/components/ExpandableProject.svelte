@@ -39,25 +39,31 @@
 
       <div style="color: var(--text-3)">
         {description}
+      </div>
+
+      <div
+        class="flex items-center gap-x-3 pt-2"
+        style="margin-top: auto;"
+      >
         {#if link}
-          <div class="links inline-flex ml-2">
-            <a target="_blank" class="a-button" href={link}>
-              {linkText}
-            </a>
-          </div>
+          <a target="_blank" class="a-button" href={link}>
+            {linkText}
+          </a>
+        {/if}
+        {#if $$slots.expandedContent}
+          <button
+            on:click={toggleExpanded}
+            class="expand-button w-fit py-1 px-2 transition-colors"
+            aria-label={isExpanded ? "Collapse" : "Expand"}
+          >
+            {isExpanded ? "Hide" : "See more"}
+          </button>
         {/if}
       </div>
 
       <!-- Expandable content -->
     </div>
   </div>
-  <button
-    on:click={toggleExpanded}
-    class="expand-button mt-2 ml-2 w-fit py-1 px-2 transition-colors"
-    aria-label={isExpanded ? "Collapse" : "Expand"}
-  >
-    {isExpanded ? "Hide" : "See more"}
-  </button>
   {#if isExpanded}
     <slot name="expandedContent">
       <!-- Default content if no slot is provided -->
