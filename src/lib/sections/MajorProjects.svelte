@@ -263,7 +263,7 @@
               style="color: var(--text-3)"
             >
               <li>
-                <strong style="color: var(--text-2)">One-line setup</strong> — a
+                <strong style="color: var(--text-2)">One-click setup</strong> — a
                 single script include or bookmarklet, no build step
               </li>
               <li>
@@ -276,8 +276,8 @@
                 formatting, tables, lists, images, and find &amp; replace
               </li>
               <li>
-                <strong style="color: var(--text-2)">Version history</strong> —
-                roll back to any earlier version in one click
+                <strong style="color: var(--text-2)">Version history</strong> — roll
+                back to any earlier version in one click
               </li>
             </ul>
             <div class="links flex" style="margin-top: auto;">
@@ -285,6 +285,63 @@
                 target="_blank"
                 class="a-button"
                 href="https://github.com/SamLee-dedeboy/htmdoc">Code</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="other-project">
+        <div class="flex flex-col sm:flex-row gap-x-2 gap-y-2">
+          <a
+            href="https://github.com/SamLee-dedeboy/VectorUI"
+            target="_blank"
+            class="shrink-0"
+          >
+            <img
+              src="VectorUI.png"
+              alt="VectorUI — text flowing around an SVG shape, a curve slider, and a radial menu"
+              class="w-full sm:w-[18rem] h-auto rounded-md object-contain"
+            />
+          </a>
+          <div class="flex flex-col mt-0.5 flex-1">
+            <h4>VectorUI</h4>
+            <div style="color: var(--text-3)">
+              A UI component library rendered entirely in SVG — shapes, not
+              boxes, as the primary layout container. It escapes the rectilinear
+              look of modern UI kits by making any closed path a container.
+            </div>
+            <ul
+              class="mt-2 flex flex-col gap-y-1 list-disc pl-5 text-sm"
+              style="color: var(--text-3)"
+            >
+              <li>
+                <strong style="color: var(--text-2)">Shape as container</strong>
+                — text wraps to an irregular silhouette's contour, not its bounding
+                box
+              </li>
+              <li>
+                <strong style="color: var(--text-2)">Layout along curves</strong
+                >
+                — a radial menu, clock face, or slider whose track <em>is</em> the
+                transfer function, all from one primitive
+              </li>
+              <li>
+                <strong style="color: var(--text-2)">Direct manipulation</strong
+                >
+                — drag handles for shape parameters; the edit UI and the runtime
+                UI share the same geometry
+              </li>
+            </ul>
+            <div class="links flex gap-x-1" style="margin-top: auto;">
+              <a
+                target="_blank"
+                class="a-button"
+                href="https://samlee-dedeboy.github.io/VectorUI/">Demo</a
+              >
+              <a
+                target="_blank"
+                class="a-button"
+                href="https://github.com/SamLee-dedeboy/VectorUI">Code</a
               >
             </div>
           </div>
@@ -302,54 +359,6 @@
             class="a-button"
             href="https://samlees-organization.gitbook.io/visengineeringguide/"
             >Page</a
-          >
-        </div>
-      </div>
-
-      <div class="other-project">
-        <h4>
-          Visualizing the career evolution of an individual in the film
-          industry.
-        </h4>
-        <div style="color: var(--text-3)">
-          Keywords: Scrollytelling, Automatic story generation
-        </div>
-        <div class="links flex">
-          <a
-            target="_blank"
-            class="a-button"
-            href="https://github.com/SamLee-dedeboy/CareerEvolution">Code</a
-          >
-        </div>
-      </div>
-
-      <div class="other-project">
-        <h4 class="">
-          Evaluating Readability of Graph Layouts with Graph Neural Networks
-        </h4>
-        <div style="color: var(--text-3)">
-          Keywords: Graph Layout, Graph Neural Networks, GAE
-        </div>
-        <div class="links flex">
-          <a
-            target="_blank"
-            class="a-button"
-            href="https://github.com/SamLee-dedeboy/graph_layout_GNN">Code</a
-          >
-        </div>
-      </div>
-      <div class="other-project">
-        <h4 class="">
-          Evaluating Empty Space Skipping methods in volume rendering
-        </h4>
-        <div style="color: var(--text-3)">
-          Keywords: Volume Rendering, Empty Space Skipping
-        </div>
-        <div class="links flex">
-          <a
-            target="_blank"
-            class="a-button"
-            href="https://github.com/SamLee-dedeboy/AdvancedVisPA">Code</a
           >
         </div>
       </div>
