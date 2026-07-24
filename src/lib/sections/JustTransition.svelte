@@ -18,9 +18,64 @@
       <div class="text-sm italic">Past Events:</div>
       <div class="flex flex-col divide-y gap-y-2">
         <div
+          class="flex flex-col outline outline-2 outline-gray-300 rounded px-2 py-1 mt-2 gap-y-1"
+        >
+          <p
+            class="ml-auto right-0 italic text-xs"
+            style="color: var(--text-3)"
+          >
+            Bay-Delta Science Conference, Sept 2025
+          </p>
+          <div class="font-semibold flex gap-x-2">
+            <span>
+              We exhibited the Just Transition Interview Dashboard at the
+              Bay-Delta Science Conference.
+            </span>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-x-2 sm:items-start">
+            <div class="flex flex-col py-1 gap-y-1 min-w-0">
+              <div class="flex gap-x-2">
+                -
+                <span>
+                  We designed a dashboard to showcase the co-learning efforts of
+                  Just Transition. The dashboard hosts four pages, each
+                  corresponding to a significant milestone of the project.
+                </span>
+              </div>
+              <div class="flex gap-x-2">
+                -
+                <span>
+                  Visitors interactively walked through the project milestones —
+                  from the initial listening interviews, to translating results
+                  into scenarios, to comparing mental models across demographic
+                  groups.
+                </span>
+              </div>
+              <div class="flex gap-x-2">
+                -
+                <span>
+                  Each page is designed to be reader-driven: visitors can play
+                  with the data to get a sense of what the project did to
+                  "co-learn" with the public.
+                </span>
+              </div>
+            </div>
+            <img
+              src="bay_delta_2025.jpg"
+              alt="Exhibiting the Just Transition Interview Dashboard at the Bay-Delta Science Conference"
+              class="max-h-[30rem] w-auto max-w-full mt-2 rounded-md object-contain sm:shrink-0"
+            />
+          </div>
+        </div>
+        <div
           class="flex flex-col outline outline-2 outline-gray-300 rounded px-2 pb-2 mt-2"
         >
-          <p class="ml-auto right-0 italic text-xs" style="color: var(--text-3)">June, 2025</p>
+          <p
+            class="ml-auto right-0 italic text-xs"
+            style="color: var(--text-3)"
+          >
+            June, 2025
+          </p>
           <div class="font-semibold flex gap-x-2">
             <span>
               We held a second public workshop at the Jean Harvie Community
@@ -75,7 +130,10 @@
           <div
             class="flex flex-col outline outline-2 outline-gray-300 rounded px-2 py-1 mt-2 gap-y-1"
           >
-            <p class="ml-auto right-0 italic text-xs" style="color: var(--text-3)">
+            <p
+              class="ml-auto right-0 italic text-xs"
+              style="color: var(--text-3)"
+            >
               June, 2024
             </p>
             <div class="font-semibold flex gap-x-2">

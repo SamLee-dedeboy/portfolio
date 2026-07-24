@@ -2,6 +2,7 @@
   import { copyTextToClipboard } from "../../utils";
   export let top = 0;
   export let left = 0;
+  let showVisPhoto = false;
   /** define section coordinates */
   // const top = -1000
   // const left = 380
@@ -58,7 +59,9 @@
 <div class="section myself">
   <h2 class="section-header mb-1">About Myself</h2>
   <div class="content-container flex gap-x-2">
-    <div class="profile-image-container w-32 h-32 sm:w-40 sm:h-40 shrink-0 self-center sm:self-start">
+    <div
+      class="profile-image-container w-32 h-32 sm:w-40 sm:h-40 shrink-0 self-center sm:self-start"
+    >
       <img
         src="profile_image.jpg"
         alt="profile"
@@ -83,8 +86,8 @@
           Prof. Kwan-Liu Ma</a
         >. I am interested in Visual Text Analytics and Human-AI Interaction.
         <span class="font-semibold italic"
-          >More specifically, I design visual tools that help people make use
-          of large amounts of text data, use AI appropriately, and know when AI
+          >More specifically, I design visual tools that help people make use of
+          large amounts of text data, use AI appropriately, and know when AI
           fails.
         </span>
         <br />
@@ -145,6 +148,34 @@
                 >Alice Ferng</a
               >!
             </p>
+            <div class="ml-2">
+              <p>
+                <span class="text-sm" style="color: var(--text-3)">
+                  [Nov 2025]
+                </span>
+                I presented our paper
+                <span class="italic" style="color: var(--text-3)"
+                  >HINTs: Sensemaking on large collections of documents with
+                  Hypergraph visualization and Intelligent agents</span
+                >
+                at
+                <strong> IEEE VIS 2025</strong>.
+                <button
+                  type="button"
+                  class="vis-photo-toggle"
+                  on:click={() => (showVisPhoto = !showVisPhoto)}
+                >
+                  {showVisPhoto ? "[hide photo]" : "[photo]"}
+                </button>
+              </p>
+              {#if showVisPhoto}
+                <img
+                  src="vis2025.jpg"
+                  alt="Presenting HINTs at IEEE VIS 2025"
+                  class="mt-1 w-full sm:w-[30rem] h-auto rounded-md object-contain"
+                />
+              {/if}
+            </div>
           </div>
         </div>
       </div>
@@ -216,6 +247,14 @@
     & .check-icon {
       display: inline;
     }
+  }
+  .vis-photo-toggle {
+    color: var(--text-link, var(--pair-color));
+    cursor: pointer;
+    font-size: 0.875rem;
+  }
+  .vis-photo-toggle:hover {
+    text-decoration: underline;
   }
   @media (max-width: 640px) {
     .content-container {
