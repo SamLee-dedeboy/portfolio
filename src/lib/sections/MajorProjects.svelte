@@ -299,7 +299,7 @@
           >
             <img
               src="VectorUI.png"
-              alt="VectorUI — text flowing around an SVG shape, a curve slider, and a radial menu"
+              alt="VectorUI — text flowing around an SVG shape, a curve slider, and a PathFlow menu"
               class="w-full sm:w-[18rem] h-auto rounded-md object-contain"
             />
           </a>
