@@ -69,12 +69,12 @@
         time_period="April 2023 &#8212 Current"
       ></EducationEntry>
       <EducationEntry
-        school="Master of Computer Science, University of California, Davis"
+        school="Master's in Computer Science, University of California, Davis"
         address="Davis, California, USA"
         time_period="Sept 2021 &#8212 Mar 2023"
       ></EducationEntry>
       <EducationEntry
-        school="Bachelor of Science in Computer Science, Nanjing University (南京大學)"
+        school="Bachelor's in Computer Science, Nanjing University (南京大學)"
         address="Nanjing, Jiangsu, China"
         time_period="Sept 2016 &#8212 June 2020"
       ></EducationEntry>
