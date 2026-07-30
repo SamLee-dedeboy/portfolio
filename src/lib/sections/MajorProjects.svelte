@@ -68,6 +68,23 @@
   <h2 class="section-header">Publications</h2>
   <div class="flex flex-col gap-y-2">
     <ResearchProjectEntry
+      teaser_path="VoiceInterface.png"
+      title="A Design Study on Voice-based Interaction for Immersive Network Visualization and Analysis"
+      authors={[
+        "Sam Yu-Te Lee",
+        "Hsin-Ai Chen",
+        "Sarah Yuniar",
+        "David Bauer",
+        "Kwan-Liu Ma",
+      ]}
+      publication="To appear in IEEE ISMAR, 2026"
+      links={[
+        ["PDF", "https://arxiv.org/abs/2607.26526"],
+        ["Code", "https://github.com/sarahayu/VR-Network-Visualization"],
+        ["Video", "https://youtu.be/rK0J-Nk6_9E"],
+      ]}
+    />
+    <ResearchProjectEntry
       teaser_path="VibeVisualizing.png"
       title="Vibe Visualizing: How Visualization Novices Try (and Fail) to Generate and Interpret Visualizations with Conversational AI"
       authors={[
@@ -146,7 +163,7 @@
         "Mei-Hua Yuan",
         "Kwan-Liu Ma",
       ]}
-      publication="PacificVis, 2025"
+      publication="IEEE PacificVis, 2025"
       links={[
         ["PDF", "https://ieeexplore.ieee.org/document/11021058"],
         ["Code", "https://github.com/SamLee-dedeboy/GreenMine"],
