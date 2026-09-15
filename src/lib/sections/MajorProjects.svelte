@@ -68,6 +68,23 @@
   <h2 class="section-header">Publications</h2>
   <div class="flex flex-col gap-y-2">
     <ResearchProjectEntry
+      teaser_path="CoworkerWheel.png"
+      title="What Makes a Great Co-Worker in an AI-Native Workplace?"
+      authors={[
+        "Rudrajit Choudhuri",
+        "Max Meijer",
+        "Sam Yu-Te Lee",
+        "Cinoo Lee",
+        "Caolan Mannion",
+        "Peter Jahn",
+        "Anita Sarma",
+        "Christian Bird",
+        "Alice Ferng",
+      ]}
+      publication="arXiv, Sept 2026"
+      links={[["PDF", "https://arxiv.org/abs/2609.13786"]]}
+    />
+    <ResearchProjectEntry
       teaser_path="VoiceInterface.png"
       title="A Design Study on Voice-based Interaction for Immersive Network Visualization and Analysis"
       authors={[
