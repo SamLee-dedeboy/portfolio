@@ -139,6 +139,28 @@
             <p>Recent News:</p>
             <p class="ml-2">
               <span class="text-sm" style="color: var(--text-3)">
+                [Sep 2026]
+              </span>
+              I will be presenting in the special session
+              <span class="italic" style="color: var(--text-3)"
+                >Just Transitions in the Delta: Co-designing, modeling,
+                visualizing and assessing salinity and climate adaptation
+                scenarios</span
+              >
+              at the
+              <a
+                target="_blank"
+                href="https://www.baydeltascienceconference.com/"
+                >Bay-Delta Science Conference</a
+              >, where we will also host an
+              <a
+                target="_blank"
+                href="https://www.baydeltascienceconference.com/abstracts/art-sessions"
+                >artwork exhibition</a
+              >.
+            </p>
+            <p class="ml-2">
+              <span class="text-sm" style="color: var(--text-3)">
                 [Jun 2026]
               </span>
               I will be joining
