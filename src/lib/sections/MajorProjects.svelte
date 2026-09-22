@@ -4,6 +4,20 @@
   import JustTransition from "./JustTransition.svelte";
   import COEQWAL from "./COEQWAL.svelte";
 
+  const notes: Record<string, string> = {
+    vibeGuide: "As coding agents take over more implementation, developers risk losing the project understanding they need to question changes and remain responsible for the result. We built Vibe-GUIDE around a live, manipulable graph so people can follow how a project evolves and keep oversight grounded in the software itself.",
+    coworker: "As AI becomes part of everyday teamwork, we need to ask what makes someone, or something, genuinely good to work with. We explore the AI-native workplace and responsible co-working, where useful collaboration still depends on human judgment, accountability, care, and making sure AI-assisted work does not create hidden costs for others.",
+    voice: "Immersive network analysis offers plenty of visual space, but conventional menus can make authoring feel cumbersome and pull attention away from the data. We explored voice-primary interaction as a more fluid way to express complex changes, while recognizing that discoverability and ambiguity still need thoughtful support.",
+    vibeViz: "Conversational AI makes creating and reading charts feel effortless, but visualization novices may not notice when a confident answer or polished chart is misleading. We call this emerging practice vibe visualizing, and we want its convenience to preserve human judgment rather than quietly encourage overreliance.",
+    varify: "GraphRAG can ground chatbot answers in evidence, but simply showing citations or raw graph facts does not help experts spot subtle mismatches. We built VArify to make that evidence easier to inspect in context, giving people more agency to question responses instead of accepting apparent grounding at face value.",
+    vizCopilot: "Enterprise chatbots can return answers that sound plausible while relying on context that misses what the user actually meant. We built VizCopilot to make context engineering visible and steerable, because appropriate reliance requires more than warning people about errors; it requires giving them practical control over what shapes the answer.",
+    videe: "Coding agents can lower the barrier to text analytics, but letting them assemble an entire analysis can hide oversimplified plans, fragile connections, and hallucinations. We built VIDEE around Decomposition, Execution, and Evaluation so analysts can inspect and shape the work instead of surrendering consequential decisions to an autonomous pipeline.",
+    greenmine: "Environmental experts need to trace complex relationships across growing document collections, yet their DPSIR taxonomy often develops only as they learn from the material. We built GreenMine to support progressive taxonomy construction, helping experts refine what they are looking for while keeping uncertainty and supporting evidence visible.",
+    awesum: "Prompt evaluation becomes painfully ad hoc when a prompt must work across an entire collection and quality cannot be captured by one score. We built Awesum around feature-oriented evaluation, helping people examine concrete qualities such as complexity or formality and turn what they notice into clearer directions for refinement.",
+    hints: "Text-analysis tools often force people to think in terms of model outputs rather than the questions they actually care about, creating a Model Alignment gap. We built HINTs to connect user goals, document organization, and visual exploration through hypergraphs and intelligent agents, making large collections easier to reason about on human terms.",
+    nova: "Media bias is real, but people often disagree about where it appears because their backgrounds and beliefs shape what they see. We built NOVA to help readers compare their expectations with patterns in coverage, supporting self-assessment rather than trying to declare a single authoritative verdict or persuade them what to believe.",
+  };
+
   /** define section coordinates */
   const top = -500 * 3;
   const left = (380 - 1500) * 3;
@@ -66,10 +80,32 @@
 <!-- Major Projects -->
 <div id="projects" class="section projects px-0.5 py-1 gap-y-2">
   <h2 class="section-header">Publications</h2>
-  <div class="flex flex-col gap-y-2">
+  <div class="flex flex-col gap-y-4">
+    <div class="year-divider">2026</div>
+    <ResearchProjectEntry
+      teaser_path="VibeGUIDE.jpg"
+      teaser_wide_path="VibeGUIDE-wide.jpg"
+      contain={true}
+      title="Vibe-GUIDE: A Graph-based User Interface in IDEs for Oversight in Vibe Coding"
+      note={notes.vibeGuide}
+      authors={[
+        "Chifang Chou",
+        "Sam Yu-Te Lee",
+        "Rudrajit Choudhuri",
+        "Kwan-Liu Ma",
+      ]}
+      publication="Preprint, Sept 2026"
+      links={[
+        ["PDF", "https://arxiv.org/abs/2609.23859"],
+        ["Code", "https://github.com/chifangg/shared-representation"],
+        ["Video", "https://www.youtube.com/watch?v=zhMmMYUJarw"],
+      ]}
+    />
     <ResearchProjectEntry
       teaser_path="CoworkerWheel.png"
+      teaser_wide_path="CoworkerWheel-wide.jpg"
       title="What Makes a Great Co-Worker in an AI-Native Workplace?"
+      note={notes.coworker}
       authors={[
         "Rudrajit Choudhuri",
         "Max Meijer",
@@ -81,12 +117,13 @@
         "Christian Bird",
         "Alice Ferng",
       ]}
-      publication="arXiv, Sept 2026"
+      publication="Preprint, Sept 2026"
       links={[["PDF", "https://arxiv.org/abs/2609.13786"]]}
     />
     <ResearchProjectEntry
       teaser_path="VoiceInterface.png"
       title="A Design Study on Voice-based Interaction for Immersive Network Visualization and Analysis"
+      note={notes.voice}
       authors={[
         "Sam Yu-Te Lee",
         "Hsin-Ai Chen",
@@ -104,6 +141,7 @@
     <ResearchProjectEntry
       teaser_path="VibeVisualizing.png"
       title="Vibe Visualizing: How Visualization Novices Try (and Fail) to Generate and Interpret Visualizations with Conversational AI"
+      note={notes.vibeViz}
       authors={[
         "Sam Yu-Te Lee",
         "Yun-Hsin Kuo",
@@ -112,7 +150,7 @@
         "Xiwei Xuan",
         "Kwan-Liu Ma",
       ]}
-      publication="arXiv, June 2026"
+      publication="Preprint, June 2026"
       links={[
         ["PDF", "https://arxiv.org/abs/2606.08914"],
         ["Video", "https://youtu.be/-uiad4dT83c"],
@@ -121,23 +159,29 @@
     />
     <ResearchProjectEntry
       teaser_path="VArify.png"
+      contain={true}
+      last_in_group={true}
       title="VArify: A Visual Analytics System for Verifying Knowledge Enhanced Large Language Model Responses in Food Science"
+      note={notes.varify}
       authors={[
         "Sam Yu-Te Lee",
         "Yan To Linus Lam",
         "Manami Nakagawa",
         "Kwan-Liu Ma",
       ]}
-      publication="arXiv, June 2026"
+      publication="Preprint, June 2026"
       links={[
         ["PDF", "https://arxiv.org/abs/2606.10177"],
         ["Code", "https://github.com/linuslyt/VArify"],
         ["Video", "https://youtu.be/K3tb-UGmtQY"],
       ]}
     />
+    <div class="year-divider">2025</div>
     <ResearchProjectEntry
       teaser_path="VizCopilot.png"
+      teaser_wide_path="VizCopilot-wide.jpg"
       title="VizCopilot: Fostering Appropriate Reliance on Enterprise Chatbots with Context Visualization"
+      note={notes.vizCopilot}
       authors={[
         "Sam Yu-Te Lee",
         "Jingya Chen",
@@ -147,7 +191,7 @@
         "Alice Ferng",
         "Mihaela Vorvoreanu",
       ]}
-      publication="arXiv, Oct 2025"
+      publication="Preprint, Oct 2025"
       links={[
         ["PDF", "https://arxiv.org/abs/2510.11954"],
         ["Video", "https://youtu.be/QeiO71Vvvww"],
@@ -155,7 +199,9 @@
     />
     <ResearchProjectEntry
       teaser_path="VIDEE.png"
+      teaser_wide_path="VIDEE-wide.jpg"
       title="VIDEE: Visual and Interactive Decomposition, Execution, and Evaluation of Text Analytics with Intelligent Agents "
+      note={notes.videe}
       authors={[
         "Sam Yu-Te Lee",
         "Chengyang Ji",
@@ -164,7 +210,7 @@
         "Dongyu Liu",
         "Kwan-Liu Ma",
       ]}
-      publication="arXiv, June 2025"
+      publication="Preprint, June 2025"
       links={[
         ["PDF", "https://arxiv.org/abs/2506.21582"],
         ["Code", "https://github.com/SamLee-dedeboy/VIDEE"],
@@ -173,7 +219,9 @@
     />
     <ResearchProjectEntry
       teaser_path="GreenMine-thumbnail.png"
+      last_in_group={true}
       title="Visual Text Mining with Progressive Taxonomy Construction for Environmental Studies"
+      note={notes.greenmine}
       authors={[
         "Sam Yu-Te Lee",
         "Cheng-Wei Hung",
@@ -187,9 +235,11 @@
         ["Video", "https://www.youtube.com/watch?v=5zMf6OQsPqs"],
       ]}
     />
+    <div class="year-divider">2024</div>
     <ResearchProjectEntry
       teaser_path="awesum.png"
       title="Towards Dataset-scale and Feature-oriented Evaluation of Text Summarization in Large Language Model Prompts"
+      note={notes.awesum}
       authors={[
         "Sam Yu-Te Lee",
         "Aryaman Bahukhandi",
@@ -207,7 +257,9 @@
     <!-- Research Projects -->
     <ResearchProjectEntry
       teaser_path="hints.jpg"
+      last_in_group={true}
       title="HINTs: Sensemaking on large collections of documents with Hypergraph visualization and Intelligent agents"
+      note={notes.hints}
       authors={["Sam Yu-Te Lee", "Kwan-Liu Ma"]}
       publication="IEEE Transactions on Visualization and Computer Graphics (TVCG), September 2024"
       links={[
@@ -216,16 +268,19 @@
         ["Video", "https://youtu.be/MHhZQ4C2lFY"],
       ]}
     />
+    <div class="year-divider">2023</div>
     <ResearchProjectEntry
       teaser_path="nova.png"
+      last_in_group={true}
       title="NOVA: A visual interface for assessing polarizing media coverage"
+      note={notes.nova}
       authors={[
         "Keshav Dasu",
         "Sam Yu-Te Lee",
         "Ying-Cheng Chen",
         "Kwan-Liu Ma",
       ]}
-      publication="arXiv, 2023"
+      publication="Preprint, 2023"
       links={[
         ["PDF", "https://arxiv.org/abs/2403.00334"],
         ["Code", "https://github.com/SamLee-dedeboy/Nova"],
@@ -413,5 +468,15 @@
   }
   .links {
     @apply mt-1;
+  }
+  .year-divider {
+    @apply flex items-center gap-x-2 text-sm font-semibold mt-2;
+    color: var(--text-2);
+  }
+  .year-divider::after {
+    content: "";
+    @apply flex-1 h-px;
+    background-color: var(--text-3);
+    opacity: 0.35;
   }
 </style>
