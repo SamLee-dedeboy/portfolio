@@ -3,6 +3,7 @@
   import Education from "./lib/sections/Education.svelte";
   import MajorProjects from "./lib/sections/MajorProjects.svelte";
   import ThemeToggler from "./lib/components/ThemeToggler.svelte";
+  import DeepestFear from "./lib/components/DeepestFear.svelte";
   // import WorkExperience from "./lib/sections/WorkExperience.svelte";
 
   const lastUpdated = __LAST_UPDATED__;
@@ -35,9 +36,32 @@
   <MajorProjects />
   <Education />
   <!-- <WorkExperience /> -->
+
+  <!-- Coda: a quiet sign-off for whoever reads all the way to the end. -->
+  <footer class="coda">
+    <p class="coda-lead">if you've read this far —</p>
+    <DeepestFear />
+  </footer>
 </div>
 
 <style>
+  .coda {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+    padding: 2.5rem 0 3rem;
+    border-top: 1px solid
+      color-mix(in srgb, var(--text-3) 30%, transparent);
+  }
+  .coda-lead {
+    margin: 0 0 0.6rem;
+    font-size: 0.8rem;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    color: var(--text-3);
+  }
+
   .sr-only {
     position: absolute;
     width: 1px;
