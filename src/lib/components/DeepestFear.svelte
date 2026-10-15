@@ -4,6 +4,7 @@
   import { tick } from "svelte";
   import { rnd, knotPoints, runPath } from "../thread";
   import { charSchedule, READ } from "../prosody";
+  import { trailActive } from "../stitches";
 
   /** True once the visitor has found all four stitches on the page. */
   export let complete = false;
@@ -484,8 +485,14 @@ Our presence automatically liberates others.`;
       <path class="fear-paper-rule" d={tagRuleD} />
       <circle class="fear-eyelet-ring" cx={eyeX} cy={eyeY} r="4.6" />
       <circle class="fear-eyelet" cx={eyeX} cy={eyeY} r="2.6" />
-      <!-- geometry only: the page's margin thread draws this loop as one stroke -->
+      <!-- the loop's geometry; with a margin trail present, the trail draws it
+           as one continuous stroke — otherwise the tag draws it itself -->
       <path class="fear-stitch-thread" d={threadMotifD} />
+      {#if !$trailActive}
+        <path class="fear-own-shadow" d={threadMotifD} />
+        <path class="fear-own-cord" d={threadMotifD} />
+        <path class="fear-own-twist" d={threadMotifD} />
+      {/if}
     </g>
   </svg>
   <span class="fear-btn-content">What's our deepest fear</span>
@@ -695,6 +702,30 @@ Our presence automatically liberates others.`;
   .fear-stitch-thread {
     fill: none;
     stroke: none;
+  }
+  /* the same twine the trail uses, for viewports without a trail */
+  .fear-own-shadow {
+    fill: none;
+    stroke: color-mix(in srgb, var(--text-1) 12%, transparent);
+    stroke-width: 3.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transform: translate(0.6px, 1.1px);
+  }
+  .fear-own-cord {
+    fill: none;
+    stroke: color-mix(in srgb, var(--text-3) 80%, var(--theme-color));
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .fear-own-twist {
+    fill: none;
+    stroke: color-mix(in srgb, var(--theme-color) 82%, var(--text-1));
+    stroke-width: 0.9;
+    stroke-linecap: round;
+    stroke-dasharray: 2 3;
+    opacity: 0.8;
   }
   .fear-overlay {
     position: fixed;

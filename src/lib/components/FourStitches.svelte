@@ -3,7 +3,7 @@
   import { fade } from "svelte/transition";
   import { knotPoints, runPath, rnd } from "../thread";
   import { charSchedule, READ } from "../prosody";
-  import { found, markFound, allFound } from "../stitches";
+  import { found, markFound, allFound, trailActive } from "../stitches";
 
   // ── the trail ──────────────────────────────────────────────────
   // Nine knots on a thread that runs down the page's margin. Each holds a
@@ -101,10 +101,13 @@
     H = host.offsetHeight;
     const appRect = document.getElementById("app")?.getBoundingClientRect();
     edgeExtra = appRect ? Math.max(0, appRect.right - rect.right) : 0;
+    // The trail needs a real margin to live in; without one it isn't shown.
     compact = window.innerWidth < 980;
-    const x = compact ? W - 8 : W + 28; // in the margin when there is one
-    const R = compact ? 3.6 : 4.4;
-    const D = compact ? 9.5 : 12.5;
+    trailActive.set(!compact);
+    if (compact) return;
+    const x = W + 28; // in the margin
+    const R = 4.4;
+    const D = 12.5;
 
     const heads = Array.from(document.querySelectorAll("h2"));
     let prev = -Infinity;
@@ -349,28 +352,27 @@
     const t = p * D;
     const C = [w + d[0] * t, d[1] * t]; // a point on the fold line
     const L = 4 * D;
-    const pt = ([x, y]: number[]) => `${x.toFixed(1)},${y.toFixed(1)}`;
-    const keep = [
+    // the part still lying flat: beyond the fold line (SVG user space)
+    const keep: number[][] = [
       [C[0] + u[0] * L, C[1] + u[1] * L],
       [C[0] - u[0] * L, C[1] - u[1] * L],
       [C[0] - u[0] * L + d[0] * L, C[1] - u[1] * L + d[1] * L],
       [C[0] + u[0] * L + d[0] * L, C[1] + u[1] * L + d[1] * L],
-    ].map(pt).join(" ");
-    const fold = [
-      [C[0] + u[0] * L, C[1] + u[1] * L],
-      [C[0] - u[0] * L, C[1] - u[1] * L],
-      [C[0] - u[0] * L - d[0] * L, C[1] - u[1] * L - d[1] * L],
-      [C[0] + u[0] * L - d[0] * L, C[1] + u[1] * L - d[1] * L],
-    ].map(pt).join(" ");
+    ];
     // reflection across the fold line: P' = P − 2((P−C)·n)n with n = d
     const [nx, ny] = d;
     const cn = C[0] * nx + C[1] * ny;
-    const m = [1 - 2 * nx * nx, -2 * nx * ny, -2 * nx * ny, 1 - 2 * ny * ny, 2 * cn * nx, 2 * cn * ny];
-    const crease = [
-      [C[0] + u[0] * L, C[1] + u[1] * L],
-      [C[0] - u[0] * L, C[1] - u[1] * L],
-    ];
-    return { keep, fold, matrix: `matrix(${m.map((v) => v.toFixed(4)).join(" ")})`, crease };
+    const a = 1 - 2 * nx * nx, b = -2 * nx * ny, c = -2 * nx * ny, dd = 1 - 2 * ny * ny;
+    const e = 2 * cn * nx, f = 2 * cn * ny;
+    const px = (n: number) => n.toFixed(2);
+    return {
+      keepSvg: keep.map(([x, y]) => `${px(x)},${px(y)}`).join(" "),
+      // the same half-plane in the peel element's own coordinates (user + PAD)
+      keepCss: keep.map(([x, y]) => `${px(x + PAD)}px ${px(y + PAD)}px`).join(", "),
+      // the reflection as a CSS matrix about the element's top-left corner
+      matrixCss: `matrix(${[a, b, c, dd, e + PAD - (a * PAD + c * PAD), f + PAD - (b * PAD + dd * PAD)].map((v) => v.toFixed(4)).join(", ")})`,
+      crease: { x: C[0], y: C[1], deg: (Math.atan2(d[1], d[0]) * 180) / Math.PI, len: L },
+    };
   }
   $: foldP = easeFold(Math.min(1, Math.max(0, noteElapsed / PEEL_MS)));
   $: foldG = foldGeometry(noteW || 1, noteH || 1, foldP);
@@ -420,7 +422,8 @@
   on:focusout={onWindowOut}
 />
 
-<div class="stitches" bind:this={host} class:compact>
+<div class="stitches" bind:this={host}>
+  {#if !compact}
   <svg class="st-svg" width={W || 1} height={H || 1} viewBox="0 0 {W || 1} {H || 1}" aria-hidden="true">
     <defs>
       <mask id="stitches-sewn" maskUnits="userSpaceOnUse" x="-80" y="-80" width={W + 160} height={H + 160}>
@@ -488,7 +491,7 @@
     <!-- svelte-ignore a11y-no-static-element-interactions -->
     <aside
       class="st-note"
-      style={compact ? "" : `left:${noteLeft}px; top:${noteTop}px; width:${noteWidth}px;`}
+      style="left:{noteLeft}px; top:{noteTop}px; width:{noteWidth}px;"
       bind:clientWidth={noteW}
       bind:clientHeight={noteH}
       transition:fade={{ duration: 140 }}
@@ -534,50 +537,65 @@
           <path class="st-rim" d={tear.open} />
         </g>
       </svg>
-      <!-- the torn-off piece of page, turning over from its top-right corner -->
+      <!-- the torn-off piece of page, turning over from its top-right corner.
+           Three layers so each frame is cheap: the flat remainder (a simple
+           clip), a static gradient for the crease, and the folded part as an
+           element whose content never changes — only its transform does, so
+           its shadow is blurred once and composited. -->
       {#if !peelDone}
-        <svg
-          class="st-peel"
-          style="left:{-PAD}px; top:{-PAD}px;"
-          width={noteW + PAD * 2}
-          height={noteH + PAD * 2}
-          viewBox="{-PAD} {-PAD} {noteW + PAD * 2} {noteH + PAD * 2}"
-          aria-hidden="true"
-        >
-          <defs>
-            <clipPath id="st-peel-clip"><path d={tear.fill} /></clipPath>
-            <clipPath id="st-keep"><polygon points={foldG.keep} /></clipPath>
-            <clipPath id="st-fold"><polygon points={foldG.fold} /></clipPath>
-            <filter id="st-crease-blur" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="2.6" />
-            </filter>
-          </defs>
-          <!-- what is still lying flat -->
-          <g clip-path="url(#st-peel-clip)">
-            <g clip-path="url(#st-keep)">
-              <path class="st-flap-paper" d={tear.fill} />
-              <path class="st-flap-rim" d={tear.open} />
-              <!-- the fold's shadow across the flat part -->
-              <line
-                class="st-crease"
-                x1={foldG.crease[0][0]}
-                y1={foldG.crease[0][1]}
-                x2={foldG.crease[1][0]}
-                y2={foldG.crease[1][1]}
-                filter="url(#st-crease-blur)"
-              />
-            </g>
-          </g>
-          <!-- the folded-over part: the back of the sheet, mirrored across the fold -->
-          <g class="st-fold" transform={foldG.matrix} style="opacity:{foldFade};">
+        <div class="st-peel" style="left:{-PAD}px; top:{-PAD}px; width:{noteW + PAD * 2}px; height:{noteH + PAD * 2}px;">
+          <svg
+            class="st-flat"
+            width={noteW + PAD * 2}
+            height={noteH + PAD * 2}
+            viewBox="{-PAD} {-PAD} {noteW + PAD * 2} {noteH + PAD * 2}"
+            aria-hidden="true"
+          >
+            <defs>
+              <clipPath id="st-peel-clip"><path d={tear.fill} /></clipPath>
+              <clipPath id="st-keep"><polygon points={foldG.keepSvg} /></clipPath>
+              <linearGradient id="st-crease-grad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#000" stop-opacity="0" />
+                <stop offset="0.5" stop-color="#000" stop-opacity="0.22" />
+                <stop offset="1" stop-color="#000" stop-opacity="0" />
+              </linearGradient>
+            </defs>
             <g clip-path="url(#st-peel-clip)">
-              <g clip-path="url(#st-fold)">
+              <g clip-path="url(#st-keep)">
+                <path class="st-flap-paper" d={tear.fill} />
+                <path class="st-flap-rim" d={tear.open} />
+                <!-- the fold's shadow across the flat part -->
+                <rect
+                  x="-8"
+                  y={-foldG.crease.len}
+                  width="16"
+                  height={foldG.crease.len * 2}
+                  fill="url(#st-crease-grad)"
+                  transform="translate({foldG.crease.x.toFixed(2)} {foldG.crease.y.toFixed(2)}) rotate({foldG.crease.deg.toFixed(2)})"
+                />
+              </g>
+            </g>
+          </svg>
+          <!-- the folded-over part: the back of the sheet, mirrored across the fold -->
+          <div class="st-foldclip" style="clip-path: polygon({foldG.keepCss}); opacity:{foldFade};">
+            <svg
+              class="st-foldsvg"
+              style="transform:{foldG.matrixCss};"
+              width={noteW + PAD * 2}
+              height={noteH + PAD * 2}
+              viewBox="{-PAD} {-PAD} {noteW + PAD * 2} {noteH + PAD * 2}"
+              aria-hidden="true"
+            >
+              <defs>
+                <clipPath id="st-fold-tear"><path d={tear.fill} /></clipPath>
+              </defs>
+              <g clip-path="url(#st-fold-tear)">
                 <path class="st-flap-back" d={tear.fill} />
                 <path class="st-flap-rim" d={tear.open} />
               </g>
-            </g>
-          </g>
-        </svg>
+            </svg>
+          </div>
+        </div>
       {/if}
       {#each noteQuotes as q, j (openIdx + ":" + j)}
         <figure class="st-quote st-body">
@@ -591,6 +609,7 @@
       {/each}
       <p class="st-credit st-body" style="opacity:{op(noteElapsed - noteTotal + 120)}">{noteCredit}</p>
     </aside>
+  {/if}
   {/if}
 </div>
 
@@ -681,7 +700,6 @@
     color: var(--text-1);
     font-family:
       "ITC Kabel", "Kabel", "ITC Kabel Std", "Josefin Sans", sans-serif;
-    perspective: 900px;
   }
   .st-body {
     max-width: 300px;
@@ -689,20 +707,36 @@
   /* the peel: a corner fold, driven per frame from the note's clock */
   .st-peel {
     position: absolute;
-    overflow: visible;
     pointer-events: none;
     z-index: 3;
+    /* the mirrored piece swings far outside while it turns; keep that from
+       counting as page overflow (it would flash a horizontal scrollbar) */
+    overflow: clip;
   }
-  .st-fold {
+  .st-flat {
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: visible;
+  }
+  .st-foldclip {
+    position: absolute;
+    inset: 0;
+    will-change: clip-path, opacity;
+  }
+  .st-foldsvg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: visible;
+    transform-origin: 0 0;
+    will-change: transform;
+    /* content is static, so this is blurred once and then just composited */
     filter: drop-shadow(-3px 4px 5px rgba(0, 0, 0, 0.3));
   }
   .st-flap-back {
     /* the back of the sheet: a touch paler than its face */
     fill: color-mix(in srgb, var(--bg-surface) 82%, #fff);
-  }
-  .st-crease {
-    stroke: rgba(0, 0, 0, 0.22);
-    stroke-width: 7;
   }
   .st-flap-paper {
     fill: var(--bg-surface);
@@ -741,13 +775,6 @@
   }
   .st-body {
     position: relative; /* above the tear (z -1), below the peel (z 3) */
-  }
-  .stitches.compact .st-note {
-    position: fixed;
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-    width: auto !important;
   }
   .st-quote {
     margin: 0 0 0.7rem;

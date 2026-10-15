@@ -1,36 +1,22 @@
 import { writable, derived } from "svelte/store";
 
-// Which stitches on the margin thread a visitor has found. Persisted so the thread
-// stays sewn when they come back.
-const KEY = "stitches.v3";
+// Which stitches on the margin thread the visitor has found in this visit.
+// Deliberately not persisted: a refresh starts the trail fresh.
 export const STITCH_COUNT = 9;
 
-function load(): Set<number> {
-  try {
-    const raw = localStorage.getItem(KEY);
-    const arr = raw ? (JSON.parse(raw) as unknown) : [];
-    return new Set(Array.isArray(arr) ? arr.filter((n) => typeof n === "number") : []);
-  } catch {
-    return new Set();
-  }
-}
-
-export const found = writable<Set<number>>(
-  typeof localStorage !== "undefined" ? load() : new Set(),
-);
+export const found = writable<Set<number>>(new Set());
 
 export function markFound(i: number) {
   found.update((s) => {
     if (s.has(i)) return s;
     const next = new Set(s);
     next.add(i);
-    try {
-      localStorage.setItem(KEY, JSON.stringify([...next]));
-    } catch {
-      /* storage unavailable — progress just won't persist */
-    }
     return next;
   });
 }
 
 export const allFound = derived(found, (s) => s.size >= STITCH_COUNT);
+
+/** Whether the margin trail is rendered at all — it needs a real margin, so
+ *  narrow viewports (phones, small tablets) go without it. */
+export const trailActive = writable(false);
