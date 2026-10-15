@@ -42,9 +42,7 @@
 
   <!-- Coda: a quiet sign-off for whoever reads all the way to the end. -->
   <footer class="coda">
-    <p class="coda-lead">
-      {$allFound ? "ten stitches, one thread —" : "if you've read this far —"}
-    </p>
+    <p class="coda-lead">if you've read this far —</p>
     <DeepestFear complete={$allFound} />
   </footer>
 </div>

@@ -2,8 +2,8 @@ import { writable, derived } from "svelte/store";
 
 // Which stitches on the margin thread a visitor has found. Persisted so the thread
 // stays sewn when they come back.
-const KEY = "stitches.v2";
-export const STITCH_COUNT = 10;
+const KEY = "stitches.v3";
+export const STITCH_COUNT = 9;
 
 function load(): Set<number> {
   try {

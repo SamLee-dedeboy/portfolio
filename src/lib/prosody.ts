@@ -23,6 +23,12 @@ export function charSchedule(chars: string[], rate = 1): Schedule {
   let t = 0;
   let j = 0;
   while (j < chars.length) {
+    if (chars[j] === "\n") {
+      starts.push(t);
+      t += READ.lineBreak * rate; // a line break is a breath, not a space
+      j++;
+      continue;
+    }
     if (/\s/.test(chars[j])) {
       starts.push(t);
       t += READ.space * rate;

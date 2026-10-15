@@ -6,7 +6,7 @@
   import { found, markFound, allFound } from "../stitches";
 
   // ── the trail ──────────────────────────────────────────────────
-  // Ten knots on a thread that runs down the page's margin. Each holds a
+  // Nine knots on a thread that runs down the page's margin. Each holds a
   // line or two; together they walk the poem's arc and hand the thread to
   // the letter at the bottom of the page.
   type Quote = { text: string; film: string; raw?: boolean };
@@ -17,10 +17,9 @@
   };
 
   const STITCHES: Stitch[] = [
-    { anchor: "About Myself", offset: 380, quotes: [{ text: "I'm not the One.", film: "The Matrix" }] },
     {
-      anchor: "Publications",
-      offset: 130,
+      anchor: "About Myself",
+      offset: 380,
       quotes: [
         { text: "“What do you wanna do?” — “I wanna be a shepherd.”", film: "Good Will Hunting", raw: true },
         {
@@ -31,7 +30,13 @@
     },
     {
       anchor: "Publications",
-      offset: 620,
+      offset: 130,
+      quotes: [{ text: "It must be exciting to be a fighter, to be totally free.", film: "Crouching Tiger, Hidden Dragon" }],
+    },
+    { anchor: "Publications", offset: 620, quotes: [{ text: "I'm not the One.", film: "The Matrix" }] },
+    {
+      anchor: "Publications",
+      offset: 1110,
       quotes: [
         { text: "You're sittin' on a winning lottery ticket…", film: "Good Will Hunting" },
         { text: "…it'd be an insult to us if you're still here in twenty years.", film: "Good Will Hunting" },
@@ -39,37 +44,40 @@
     },
     {
       anchor: "Publications",
-      offset: 1110,
+      offset: 1600,
       quotes: [
         { text: "You'll never have that kind of relationship in a world where you're afraid to take the first step.", film: "Good Will Hunting" },
       ],
     },
-    {
-      anchor: "Publications",
-      offset: 1600,
-      quotes: [{ text: "I can only show you the door. You have to walk through it.", film: "The Matrix" }],
-    },
+    { anchor: "Projects", offset: 140, quotes: [{ text: "I can only show you the door. You have to walk through it.", film: "The Matrix" }] },
     {
       anchor: "Projects",
-      offset: 140,
+      offset: 620,
       quotes: [
         {
-          text: "\u201cWhen will I know I\u2019m ready?\u201d \u2014 \u201cYou won\u2019t. It\u2019s a leap of faith. That\u2019s all it is, Miles. A leap of faith.\u201d",
+          text: "“When will I know I’m ready?” — “You won’t. It’s a leap of faith. That’s all it is, Miles. A leap of faith.”",
           film: "Spider-Verse",
           raw: true,
         },
       ],
     },
     {
-      anchor: "Projects",
-      offset: 620,
+      anchor: "Education",
+      offset: 40,
       quotes: [
         { text: "Being the One is just like being in love. No one can tell you you're in love — you just know it.", film: "The Matrix" },
       ],
     },
-    { anchor: "Education", offset: 40, quotes: [{ text: "Whatever path you take in this life, be true to yourself.", film: "Crouching Tiger, Hidden Dragon" }] },
-    { anchor: "Education", offset: 175, quotes: [{ text: "Only by letting go can we truly possess what is real.", film: "Crouching Tiger, Hidden Dragon" }] },
-    { anchor: "Education", offset: 310, quotes: [{ text: "Anyone can wear the mask.", film: "Spider-Verse" }] },
+    {
+      anchor: "Education",
+      offset: 175,
+      quotes: [
+        {
+          text: "Everyone keeps telling me how my story is supposed to go. Nah, Imma do my own thing.",
+          film: "Across the Spider-Verse",
+        },
+      ],
+    },
   ];
 
   // ── geometry ───────────────────────────────────────────────────
@@ -82,7 +90,6 @@
   let pathD = "";
   let pathLen = 0;
   let knots: { x: number; y: number }[] = [];
-  let knotD: string[] = []; // each knot's loop, for the hover preview
   let knotExit: number[] = []; // path length at each knot's exit (actual units)
   let ready = false; // first paint done → later sewing animates
   const seed = 1 + Math.floor(Math.random() * 1e6);
@@ -142,20 +149,15 @@
     let len = 0; // analytic length so far
     const exits: number[] = [];
     const kp: { x: number; y: number }[] = [];
-    const kd: string[] = [];
     ys.forEach((Yc, i) => {
       if (Yc == null) return;
       const pts = knotPoints(Yc, seed + i * 7, x, R, D);
       d += runPath(y, pts[0].y, seed + 101 + i * 3, x);
       len += pts[0].y - y;
-      let kds = `M ${f(pts[0].x)} ${f(pts[0].y)}`;
       for (let k = 1; k < pts.length; k++) {
-        const seg = ` L ${f(pts[k].x)} ${f(pts[k].y)}`;
-        d += seg;
-        kds += seg;
+        d += ` L ${f(pts[k].x)} ${f(pts[k].y)}`;
         len += Math.hypot(pts[k].x - pts[k - 1].x, pts[k].y - pts[k - 1].y);
       }
-      kd.push(kds);
       exits.push(len);
       kp.push({ x, y: Yc });
       y = pts[pts.length - 1].y;
@@ -191,7 +193,6 @@
     }
     pathD = d;
     knots = kp;
-    knotD = kd;
     await tick();
     if (guideEl) {
       pathLen = guideEl.getTotalLength();
@@ -224,6 +225,8 @@
 
   // ── interaction ────────────────────────────────────────────────
   let openIdx: number | null = null;
+  let hoverIdx: number | null = null;
+  let tagHover = false; // hovering the letter's tag sews the thread all the way to it
   let peelDone = false; // the peel overlay is removed once it has played
   let peelTimer: ReturnType<typeof setTimeout> | undefined;
 
@@ -250,6 +253,17 @@
   }
   function onWindowKey(e: KeyboardEvent) {
     if (e.key === "Escape") closeNow();
+  }
+  // the tag lives in another component; watch pointer/focus crossing it
+  function onWindowOver(e: Event) {
+    const t = e.target as Element | null;
+    if (t?.closest?.(".fear-btn")) tagHover = true;
+  }
+  function onWindowOut(e: MouseEvent | FocusEvent) {
+    const t = e.target as Element | null;
+    if (!t?.closest?.(".fear-btn")) return;
+    const to = (e as MouseEvent).relatedTarget as Element | null;
+    if (!to?.closest?.(".fear-btn")) tagHover = false;
   }
   function onWindowClick(e: MouseEvent) {
     if (openIdx == null) return;
@@ -278,7 +292,10 @@
     openIdx != null
       ? STITCHES[openIdx].quotes.map((q) => ({
           ...q,
-          chars: Array.from(q.raw ? q.text : `“${q.text}”`),
+          // an exchange breaks at the dash, so the reply sits on its own line
+          chars: Array.from(
+            q.raw ? q.text.replace(/\s\u2014\s/g, "\n\u2014 ") : `“${q.text}”`,
+          ),
         }))
       : [];
   $: noteSched = (() => {
@@ -363,6 +380,20 @@
     ? pathLen
     : Math.max(0, ...[...$found].map((i) => knotExit[i] ?? 0));
   $: sewnOffset = pathLen ? pathLen - sewnTarget : 1e6;
+  // hovering a knot sews provisionally from the thread's current end through it
+  $: hoverTarget = tagHover
+    ? pathLen
+    : hoverIdx != null
+      ? Math.max(sewnTarget, knotExit[hoverIdx] ?? 0)
+      : sewnTarget;
+  $: hoverOffset = pathLen ? pathLen - hoverTarget : 1e6;
+  let prevHover = 0;
+  let hoverDur = 0;
+  $: {
+    const delta = Math.abs(hoverTarget - prevHover);
+    hoverDur = ready ? Math.min(1600, Math.max(350, (delta / 1400) * 1000)) : 0;
+    prevHover = hoverTarget;
+  }
   let prevTarget = 0;
   let sewnDur = 0;
   $: {
@@ -380,7 +411,14 @@
   $: noteTop = openIdx != null && knots[openIdx] ? knots[openIdx].y - 26 : 0;
 </script>
 
-<svelte:window on:keydown={onWindowKey} on:click={onWindowClick} />
+<svelte:window
+  on:keydown={onWindowKey}
+  on:click={onWindowClick}
+  on:mouseover={onWindowOver}
+  on:mouseout={onWindowOut}
+  on:focusin={onWindowOver}
+  on:focusout={onWindowOut}
+/>
 
 <div class="stitches" bind:this={host} class:compact>
   <svg class="st-svg" width={W || 1} height={H || 1} viewBox="0 0 {W || 1} {H || 1}" aria-hidden="true">
@@ -396,8 +434,24 @@
           style="stroke-dasharray:{pathLen || 1e6}; stroke-dashoffset:{sewnOffset}; transition-duration:{sewnDur}ms;"
         />
       </mask>
+      <mask id="stitches-hover" maskUnits="userSpaceOnUse" x="-80" y="-80" width={W + 160} height={H + 160}>
+        <path
+          d={pathD}
+          fill="none"
+          stroke="#fff"
+          stroke-width="10"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          style="stroke-dasharray:{pathLen || 1e6}; stroke-dashoffset:{hoverOffset}; transition-duration:{hoverDur}ms;"
+        />
+      </mask>
     </defs>
     <path class="st-guide" d={pathD} bind:this={guideEl} />
+    <g mask="url(#stitches-hover)">
+      <path class="st-cord-shadow" d={pathD} />
+      <path class="st-cord" d={pathD} />
+      <path class="st-twist" d={pathD} />
+    </g>
     <g mask="url(#stitches-sewn)">
       <path class="st-cord-shadow" d={pathD} />
       <path class="st-cord" d={pathD} />
@@ -421,11 +475,12 @@
       aria-expanded={openIdx === i}
       on:click|stopPropagation={() => toggle(i)}
       on:keydown={(e) => onKey(e, i)}
+      on:mouseenter={() => (hoverIdx = i)}
+      on:mouseleave={() => (hoverIdx = null)}
+      on:focus={() => (hoverIdx = i)}
+      on:blur={() => (hoverIdx = null)}
     >
       <circle class="st-hit" cx={k.x + 10} cy={k.y} r="26" />
-      <g class="st-hover">
-        <path class="st-preview" d={knotD[i]} />
-      </g>
     </svg>
   {/each}
 
@@ -527,10 +582,10 @@
       {#each noteQuotes as q, j (openIdx + ":" + j)}
         <figure class="st-quote st-body">
           <blockquote
-            >{#each q.chars as ch, c}<span
-                class="ch"
-                style="opacity:{op(noteElapsed - noteSched[j].start - noteSched[j].starts[c])}">{ch}</span
-              >{/each}</blockquote
+            >{#each q.chars as ch, c}{#if ch === "\n"}<br />{:else}<span
+                  class="ch"
+                  style="opacity:{op(noteElapsed - noteSched[j].start - noteSched[j].starts[c])}">{ch}</span
+                >{/if}{/each}</blockquote
           >
         </figure>
       {/each}
@@ -600,32 +655,7 @@
   .st-hit {
     fill: transparent;
   }
-  /* hover: the loop firms up under the cursor — a preview of the tie */
-  .st-hover {
-    transform-box: fill-box;
-    transform-origin: center;
-    transition: transform 0.2s ease;
-  }
-  .st-preview {
-    fill: none;
-    stroke: color-mix(in srgb, var(--text-3) 80%, var(--theme-color));
-    stroke-width: 2.2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    opacity: 0;
-    transition: opacity 0.2s ease;
-  }
-  .st-knot:hover .st-hover,
-  .st-knot:focus-visible .st-hover {
-    transform: scale(1.08);
-  }
-  .st-knot:hover .st-preview,
-  .st-knot:focus-visible .st-preview {
-    opacity: 0.55;
-  }
-  .st-knot.found .st-preview {
-    opacity: 0; /* already sewn in the thread's own twine */
-  }
+  /* hover is drawn by the thread itself: see #stitches-hover */
   .st-knot:focus-visible .st-hit {
     stroke: var(--pair-color);
     stroke-width: 1;
