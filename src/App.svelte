@@ -4,13 +4,16 @@
   import MajorProjects from "./lib/sections/MajorProjects.svelte";
   import ThemeToggler from "./lib/components/ThemeToggler.svelte";
   import DeepestFear from "./lib/components/DeepestFear.svelte";
+  import FourStitches from "./lib/components/FourStitches.svelte";
+  import { allFound } from "./lib/stitches";
   // import WorkExperience from "./lib/sections/WorkExperience.svelte";
 
   const lastUpdated = __LAST_UPDATED__;
 </script>
 
 <ThemeToggler />
-<div class="flex flex-col gap-y-3 justify-center">
+<div class="page flex flex-col gap-y-3 justify-center">
+  <FourStitches />
   <header class="flex flex-wrap items-center gap-y-1 font-semibold w-full pr-[5rem]">
     <h1 class="text-[1.4rem] sm:text-[2rem] font-semibold leading-tight">
       Sam (Yu-Te) Lee's Portfolio
@@ -39,12 +42,17 @@
 
   <!-- Coda: a quiet sign-off for whoever reads all the way to the end. -->
   <footer class="coda">
-    <p class="coda-lead">if you've read this far —</p>
-    <DeepestFear />
+    <p class="coda-lead">
+      {$allFound ? "ten stitches, one thread —" : "if you've read this far —"}
+    </p>
+    <DeepestFear complete={$allFound} />
   </footer>
 </div>
 
 <style>
+  .page {
+    position: relative; /* the margin thread positions against this */
+  }
   .coda {
     display: flex;
     flex-direction: column;

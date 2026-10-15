@@ -2,6 +2,11 @@
   import { fade } from "svelte/transition";
   import { cubicOut, cubicIn } from "svelte/easing";
   import { tick } from "svelte";
+  import { rnd, knotPoints, runPath } from "../thread";
+  import { charSchedule, READ } from "../prosody";
+
+  /** True once the visitor has found all four stitches on the page. */
+  export let complete = false;
 
   let open = false;
 
@@ -92,21 +97,10 @@ Our presence automatically liberates others.`;
   let rafId = 0;
   let lastT = 0;
 
-  // ── pacing: modelled on reading a poem aloud ──────────────────
-  // Words take time by length; punctuation and line ends add breaths;
-  // emphasised (red) lines read a little slower; knots take a fixed beat.
-  const WORD_BASE_MS = 110; // per word
-  const WORD_PER_LETTER_MS = 42; // per letter in the word
-  const SPACE_MS = 40;
-  const PAUSE_COMMA_MS = 240;
-  const PAUSE_SEMI_MS = 360;
-  const PAUSE_END_MS = 480; // . ? !
-  const PAUSE_DASH_MS = 420;
-  const LINE_BREAK_MS = 260; // breath at an unpunctuated line end
-  const LINE_END_EXTRA_MS = 140; // on top of a sentence-ending pause
-  const EMPHASIS_RATE = 1.15;
+  // ── pacing (see prosody.ts) ────────────────────────────────────
+  const EMPHASIS_RATE = 1.15; // the red lines read a little slower
   const READ_RATE = 1; // overall tempo: <1 reads faster, >1 slower
-  const FADE_MS = 260; // each character's fade-in
+  const FADE_MS = READ.fade;
   const KNOT_MS = 1100;
   const GAP_MS_PER_PX = 10;
 
@@ -152,38 +146,6 @@ Our presence automatically liberates others.`;
   $: lineLocalT = flatLines.map((_, i) => elapsedNow - (lineStartT[i] ?? 0));
   $: maskDash = pathLen || 1e6;
   $: maskOffset = pathLen ? pathLen * (1 - progress) : 1e6;
-
-  // Deterministic per-knot variation so each loop is slightly its own.
-  const rnd = (n: number) => {
-    const x = Math.sin(n * 127.1 + 311.7) * 43758.5453;
-    return x - Math.floor(x);
-  };
-  function knotPoints(Yc: number, seed: number) {
-    // Every loop gets its own character: size, how full each lobe is, and a
-    // little vertical squash. Endpoints always land back on the stem.
-    const r = KNOT_R * (0.9 + 0.2 * rnd(seed));
-    const d = KNOT_D * (0.82 + 0.36 * rnd(seed + 1));
-    const lobe = (rnd(seed + 2) - 0.5) * 0.5; // asymmetry between the two lobes
-    const squash = 0.85 + 0.3 * rnd(seed + 3);
-    const pts: { x: number; y: number }[] = [];
-    for (let k = 0; k <= KNOT_SAMPLES; k++) {
-      const t = -Math.PI + (2 * Math.PI * k) / KNOT_SAMPLES;
-      pts.push({
-        x: CX + d * (Math.cos(t) + 1) * (1 + lobe * Math.sin(t)),
-        y: Yc + r * t - d * squash * Math.sin(t),
-      });
-    }
-    return pts; // enters at (CX, Yc − rπ) moving down, exits at (CX, Yc + rπ)
-  }
-  // A straight run with a faint, smooth lateral drift — hand-held, not ruled.
-  function runPath(y0: number, y1: number, seed: number): string {
-    const f = (n: number) => n.toFixed(2);
-    const len = y1 - y0;
-    if (len < 24) return ` L ${CX} ${f(y1)}`;
-    const a = (rnd(seed) - 0.5) * 2.4;
-    const b = (rnd(seed + 1) - 0.5) * 2.4;
-    return ` C ${f(CX + a)} ${f(y0 + len * 0.33)} ${f(CX + b)} ${f(y0 + len * 0.66)} ${f(CX)} ${f(y1)}`;
-  }
 
   // ── the trigger is a paper tag: a slip of the letter's stock with a
   // pointed end and an eyelet the thread passes through. The path is the
@@ -244,39 +206,9 @@ Our presence automatically liberates others.`;
     const starts: number[][] = [];
     const lineDur = flatLines.map((it) => {
       const rate = (it.highlight ? EMPHASIS_RATE : 1) * READ_RATE;
-      const st: number[] = [];
-      let t = 0;
-      const chars = it.chars;
-      let j = 0;
-      while (j < chars.length) {
-        if (/\s/.test(chars[j])) {
-          st.push(t);
-          t += SPACE_MS;
-          j++;
-          continue;
-        }
-        let k = j;
-        while (k < chars.length && !/\s/.test(chars[k])) k++;
-        const token = chars.slice(j, k);
-        const letters = token.filter((c) => /[\p{L}\p{N}]/u.test(c)).length;
-        const wordMs =
-          (WORD_BASE_MS + WORD_PER_LETTER_MS * Math.max(1, letters)) * rate;
-        const per = wordMs / token.length;
-        for (let q = 0; q < token.length; q++) {
-          st.push(t);
-          t += per;
-        }
-        const last = token[token.length - 1];
-        if (/[.?!]/.test(last)) t += READ_RATE * PAUSE_END_MS;
-        else if (/[,]/.test(last)) t += READ_RATE * PAUSE_COMMA_MS;
-        else if (/[;:]/.test(last)) t += READ_RATE * PAUSE_SEMI_MS;
-        else if (/[—–]/.test(last)) t += READ_RATE * PAUSE_DASH_MS;
-        j = k;
-      }
-      const tail = chars.length ? chars[chars.length - 1] : "";
-      t += READ_RATE * (/[.?!,;:]/.test(tail) ? LINE_END_EXTRA_MS : LINE_BREAK_MS);
-      starts.push(st);
-      return Math.max(t, FADE_MS + 50);
+      const sch = charSchedule(it.chars, rate);
+      starts.push(sch.starts);
+      return sch.total;
     });
     charStart = starts;
     // Time to travel a vertical run: each covered line contributes its share
@@ -311,11 +243,11 @@ Our presence automatically liberates others.`;
     const sl: number[] = [];
     const sd: number[] = [];
     knotCentres.forEach((Yc, k) => {
-      const pts = knotPoints(Yc, knotSeed + k * 7);
+      const pts = knotPoints(Yc, knotSeed + k * 7, CX, KNOT_R, KNOT_D, KNOT_SAMPLES);
       const yIn = pts[0].y;
       if (yIn > y) {
         const dur = runDuration(y, yIn);
-        d += runPath(y, yIn, knotSeed + 101 + k * 3);
+        d += runPath(y, yIn, knotSeed + 101 + k * 3, CX);
         sl.push(yIn - y);
         sd.push(dur);
         segs.push({ type: "run", y0: y, y1: yIn, dur });
@@ -333,7 +265,7 @@ Our presence automatically liberates others.`;
     });
     if (contentHeight > y) {
       const dur = runDuration(y, contentHeight);
-      d += runPath(y, contentHeight, knotSeed + 977);
+      d += runPath(y, contentHeight, knotSeed + 977, CX);
       sl.push(contentHeight - y);
       sd.push(dur);
       segs.push({ type: "run", y0: y, y1: contentHeight, dur });
@@ -534,6 +466,7 @@ Our presence automatically liberates others.`;
   type="button"
   class="fear-btn"
   class:is-open={open}
+  class:complete={complete}
   bind:this={btnEl}
   bind:clientWidth={btnW}
   bind:clientHeight={btnH}
@@ -551,6 +484,7 @@ Our presence automatically liberates others.`;
       <path class="fear-paper-rule" d={tagRuleD} />
       <circle class="fear-eyelet-ring" cx={eyeX} cy={eyeY} r="4.6" />
       <circle class="fear-eyelet" cx={eyeX} cy={eyeY} r="2.6" />
+      <!-- geometry only: the page's margin thread draws this loop as one stroke -->
       <path class="fear-stitch-thread" d={threadMotifD} />
     </g>
   </svg>
@@ -756,243 +690,11 @@ Our presence automatically liberates others.`;
   .fear-btn:focus-visible .fear-paper-fill {
     stroke: rgba(120, 95, 60, 0.9);
   }
+  /* the tag's thread is drawn by the page's margin thread (FourStitches)
+     as one continuous stroke; this path only supplies the geometry */
   .fear-stitch-thread {
     fill: none;
-    stroke: #6b4f2e;
-    stroke-width: 1.4;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 90;
-    stroke-dashoffset: 34; /* resting: the loop is half-stitched */
-    transition: stroke-dashoffset 0.55s ease;
-  }
-  .fear-btn:hover .fear-stitch-thread,
-  .fear-btn:focus-visible .fear-stitch-thread {
-    stroke-dashoffset: 0; /* hover: the stitch completes */
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .fear-stitch-thread {
-      stroke-dashoffset: 0;
-      transition: none;
-    }
-  }
-
-  .fear-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    overflow-y: auto;
-    padding: 1rem 1.5rem;
-    background: rgba(20, 16, 10, 0.55);
-    backdrop-filter: blur(2px);
-  }
-
-  .letter {
-    position: relative;
-    width: 100%;
-    max-width: 46rem;
-    margin: auto;
-    padding: 2.5rem 2.25rem 2.25rem 2.75rem;
-    background: #faf4e6;
-    color: #3a2f22;
-    border-radius: 2px;
-    font-family:
-      "ITC Kabel", "Kabel", "ITC Kabel Std", "Josefin Sans", sans-serif;
-    box-shadow:
-      0 24px 60px -16px rgba(0, 0, 0, 0.55),
-      0 2px 6px rgba(0, 0, 0, 0.12),
-      inset 0 0 0 1px rgba(120, 95, 60, 0.18);
-  }
-  /* letterpress double rule */
-  .letter::before,
-  .letter::after {
-    content: "";
-    position: absolute;
-    pointer-events: none;
-  }
-  .letter::before {
-    inset: 10px;
-    border: 1px solid rgba(120, 95, 60, 0.28);
-  }
-  .letter::after {
-    inset: 14px;
-    border: 0.5px solid rgba(120, 95, 60, 0.18);
-  }
-
-  .letter-close {
-    position: absolute;
-    top: 8px;
-    right: 14px;
-    z-index: 1;
-    font-size: 1.5rem;
-    line-height: 1;
-    color: rgba(90, 70, 45, 0.55);
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-  }
-  .letter-close:hover {
-    color: #3a2f22;
-  }
-
-  .letter-body {
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    gap: 1.5rem;
-  }
-  .poem {
-    flex: 1;
-    min-width: 0;
-  }
-  .line {
-    margin: 0;
-    font-size: 1.08rem;
-    line-height: 1.68;
-    letter-spacing: 0.012em;
-    text-align: left;
-  }
-  .ch {
-    /* opacity is driven per frame; no transition so scrubbing stays exact */
-    transition: none;
-  }
-  .stanza-start:not(:first-child) {
-    margin-top: 1.85rem; /* room for a knot in the gap */
-  }
-  .highlight {
-    color: #c23b2b;
-  }
-  .attribution {
-    margin: 1.4rem 0 0;
-    text-align: right;
-    font-size: 0.95rem;
-    font-style: italic;
-    letter-spacing: 0.02em;
-    color: rgba(90, 70, 45, 0.85);
-  }
-
-  /* ── thread + needle ───────────────────────────────────────── */
-  .thread {
-    display: block;
-    flex-shrink: 0;
-    cursor: grab;
-    overflow: visible;
-  }
-  .thread.grabbing {
-    cursor: grabbing;
-  }
-  .measure {
-    fill: none;
     stroke: none;
-  }
-  .guide {
-    stroke: rgba(94, 67, 40, 0.12);
-    stroke-width: 1;
-  }
-  .cord-shadow {
-    fill: none;
-    stroke: rgba(70, 48, 24, 0.18);
-    stroke-width: 3.6;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    transform: translate(0.6px, 1.1px);
-  }
-  .cord {
-    fill: none;
-    stroke: #5e4328;
-    stroke-width: 2.6;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  .cord-twist {
-    fill: none;
-    stroke: #d9b27a;
-    stroke-width: 0.9;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 2 3;
-    opacity: 0.7;
-  }
-  @media (max-width: 640px) {
-    .fear-overlay {
-      padding: 0.75rem 0.5rem;
-    }
-    .letter {
-      padding: 2rem 0.9rem 1.75rem 1.1rem;
-    }
-    .letter::before {
-      inset: 7px;
-    }
-    .letter::after {
-      inset: 10px;
-    }
-    .letter-body {
-      gap: 0.6rem;
-    }
-    .line {
-      font-size: 0.98rem;
-      line-height: 1.6;
-      letter-spacing: 0.006em;
-    }
-    .stanza-start:not(:first-child) {
-      margin-top: 1.5rem;
-    }
-    .attribution {
-      margin-top: 1.1rem;
-      font-size: 0.88rem;
-    }
-  }
-
-  /* idle "breathing" halo says: this is something you can grab */
-  .needle-halo {
-    fill: #c9a070;
-    filter: blur(2.5px); /* soft glow, not a disc */
-    opacity: 0.2;
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: needle-breathe 2.6s ease-in-out infinite;
-    transition: opacity 0.2s ease;
-  }
-  @keyframes needle-breathe {
-    0%,
-    100% {
-      opacity: 0.1;
-      transform: scale(0.8);
-    }
-    50% {
-      opacity: 0.28;
-      transform: scale(1.1);
-    }
-  }
-  .needle-art {
-    transform-box: fill-box;
-    transform-origin: center;
-    transition: transform 0.18s ease;
-  }
-  .thread:hover .needle-halo {
-    animation: none;
-    opacity: 0.36;
-    transform: scale(1.12);
-  }
-  .thread:hover .needle-art {
-    transform: scale(1.07);
-  }
-  .thread.grabbing .needle-halo {
-    animation: none;
-    opacity: 0.44;
-    transform: scale(0.95);
-  }
-  .thread.grabbing .needle-art {
-    transform: scale(1.1);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .needle-halo {
-      animation: none;
-      opacity: 0.25;
-    }
   }
   .needle-shadow {
     stroke: rgba(40, 30, 15, 0.26);
