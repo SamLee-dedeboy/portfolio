@@ -696,6 +696,223 @@ Our presence automatically liberates others.`;
     fill: none;
     stroke: none;
   }
+  .fear-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 1rem 1.5rem;
+    background: rgba(20, 16, 10, 0.55);
+    backdrop-filter: blur(2px);
+  }
+
+  .letter {
+    position: relative;
+    width: 100%;
+    max-width: 46rem;
+    margin: auto;
+    padding: 2.5rem 2.25rem 2.25rem 2.75rem;
+    background: #faf4e6;
+    color: #3a2f22;
+    border-radius: 2px;
+    font-family:
+      "ITC Kabel", "Kabel", "ITC Kabel Std", "Josefin Sans", sans-serif;
+    box-shadow:
+      0 24px 60px -16px rgba(0, 0, 0, 0.55),
+      0 2px 6px rgba(0, 0, 0, 0.12),
+      inset 0 0 0 1px rgba(120, 95, 60, 0.18);
+  }
+  /* letterpress double rule */
+  .letter::before,
+  .letter::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+  }
+  .letter::before {
+    inset: 10px;
+    border: 1px solid rgba(120, 95, 60, 0.28);
+  }
+  .letter::after {
+    inset: 14px;
+    border: 0.5px solid rgba(120, 95, 60, 0.18);
+  }
+
+  .letter-close {
+    position: absolute;
+    top: 8px;
+    right: 14px;
+    z-index: 1;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: rgba(90, 70, 45, 0.55);
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+  .letter-close:hover {
+    color: #3a2f22;
+  }
+
+  .letter-body {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .poem {
+    flex: 1;
+    min-width: 0;
+  }
+  .line {
+    margin: 0;
+    font-size: 1.08rem;
+    line-height: 1.68;
+    letter-spacing: 0.012em;
+    text-align: left;
+  }
+  .ch {
+    /* opacity is driven per frame; no transition so scrubbing stays exact */
+    transition: none;
+  }
+  .stanza-start:not(:first-child) {
+    margin-top: 1.85rem; /* room for a knot in the gap */
+  }
+  .highlight {
+    color: #c23b2b;
+  }
+  .attribution {
+    margin: 1.4rem 0 0;
+    text-align: right;
+    font-size: 0.95rem;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    color: rgba(90, 70, 45, 0.85);
+  }
+
+  /* ── thread + needle ───────────────────────────────────────── */
+  .thread {
+    display: block;
+    flex-shrink: 0;
+    cursor: grab;
+    overflow: visible;
+  }
+  .thread.grabbing {
+    cursor: grabbing;
+  }
+  .measure {
+    fill: none;
+    stroke: none;
+  }
+  .guide {
+    stroke: rgba(94, 67, 40, 0.12);
+    stroke-width: 1;
+  }
+  .cord-shadow {
+    fill: none;
+    stroke: rgba(70, 48, 24, 0.18);
+    stroke-width: 3.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transform: translate(0.6px, 1.1px);
+  }
+  .cord {
+    fill: none;
+    stroke: #5e4328;
+    stroke-width: 2.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .cord-twist {
+    fill: none;
+    stroke: #d9b27a;
+    stroke-width: 0.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 2 3;
+    opacity: 0.7;
+  }
+  @media (max-width: 640px) {
+    .fear-overlay {
+      padding: 0.75rem 0.5rem;
+    }
+    .letter {
+      padding: 2rem 0.9rem 1.75rem 1.1rem;
+    }
+    .letter::before {
+      inset: 7px;
+    }
+    .letter::after {
+      inset: 10px;
+    }
+    .letter-body {
+      gap: 0.6rem;
+    }
+    .line {
+      font-size: 0.98rem;
+      line-height: 1.6;
+      letter-spacing: 0.006em;
+    }
+    .stanza-start:not(:first-child) {
+      margin-top: 1.5rem;
+    }
+    .attribution {
+      margin-top: 1.1rem;
+      font-size: 0.88rem;
+    }
+  }
+
+  /* idle "breathing" halo says: this is something you can grab */
+  .needle-halo {
+    fill: #c9a070;
+    filter: blur(2.5px); /* soft glow, not a disc */
+    opacity: 0.2;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: needle-breathe 2.6s ease-in-out infinite;
+    transition: opacity 0.2s ease;
+  }
+  @keyframes needle-breathe {
+    0%,
+    100% {
+      opacity: 0.1;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 0.28;
+      transform: scale(1.1);
+    }
+  }
+  .needle-art {
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: transform 0.18s ease;
+  }
+  .thread:hover .needle-halo {
+    animation: none;
+    opacity: 0.36;
+    transform: scale(1.12);
+  }
+  .thread:hover .needle-art {
+    transform: scale(1.07);
+  }
+  .thread.grabbing .needle-halo {
+    animation: none;
+    opacity: 0.44;
+    transform: scale(0.95);
+  }
+  .thread.grabbing .needle-art {
+    transform: scale(1.1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .needle-halo {
+      animation: none;
+      opacity: 0.25;
+    }
+  }
   .needle-shadow {
     stroke: rgba(40, 30, 15, 0.26);
     stroke-width: 4;

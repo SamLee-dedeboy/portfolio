@@ -49,7 +49,17 @@
       offset: 1600,
       quotes: [{ text: "I can only show you the door. You have to walk through it.", film: "The Matrix" }],
     },
-    { anchor: "Projects", offset: 140, quotes: [{ text: "That's all it is, Miles. A leap of faith.", film: "Spider-Verse" }] },
+    {
+      anchor: "Projects",
+      offset: 140,
+      quotes: [
+        {
+          text: "\u201cWhen will I know I\u2019m ready?\u201d \u2014 \u201cYou won\u2019t. It\u2019s a leap of faith. That\u2019s all it is, Miles. A leap of faith.\u201d",
+          film: "Spider-Verse",
+          raw: true,
+        },
+      ],
+    },
     {
       anchor: "Projects",
       offset: 620,
