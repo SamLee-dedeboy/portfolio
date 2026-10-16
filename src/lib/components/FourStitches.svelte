@@ -33,7 +33,17 @@
       offset: 130,
       quotes: [{ text: "It must be exciting to be a fighter, to be totally free.", film: "Crouching Tiger, Hidden Dragon" }],
     },
-    { anchor: "Publications", offset: 620, quotes: [{ text: "I'm not the One.", film: "The Matrix" }] },
+    {
+      anchor: "Publications",
+      offset: 620,
+      quotes: [
+        {
+          text: "“You already know what I’m going to tell you.” — “I’m not the One.”",
+          film: "The Matrix",
+          raw: true,
+        },
+      ],
+    },
     {
       anchor: "Publications",
       offset: 1110,
