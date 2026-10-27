@@ -1,6 +1,6 @@
 /*
   THEME SYSTEM
-  Each theme defines exactly 5 variables. Add new themes at the bottom.
+  Two themes: "black" (dark) and "white" (light). Each defines:
 
   --theme-color   page background color (defines the overall theme)
   --pair-color    accent / highlight — h1–h4, active UI states
@@ -8,6 +8,7 @@
   --text-1        primary body text — bio paragraphs, school names, main content
   --text-2        secondary / interactive — captions, button labels, sub-headings
   --text-3        muted / meta — author names, dates, keyword descriptions, hints
+  --bg-surface    card / panel background, slightly offset from --theme-color
 */
 
 /* ── Palette constants ──────────────────────────────────────────── */
@@ -20,7 +21,7 @@
   --bg-dark: #2a373c;
 }
 
-/* ── Add themes below ───────────────────────────────────────────── */
+/* ── Themes ─────────────────────────────────────────────────────── */
 
 [data-theme="black"] {
   color-scheme: dark;
@@ -33,8 +34,6 @@
   --bg-surface: var(--bg-dark);
 }
 
-
-
 [data-theme="white"] {
   color-scheme: light;
   --theme-color: #e4f2ff;
@@ -44,69 +43,4 @@
   --text-3: var(--gray);
   --text-link: var(--blue);
   --bg-surface: var(--bg-light);
-}
-
-[data-theme="mint"] {
-  color-scheme: light;
-  --theme-color: #dfebd9;
-  --pair-color:  #8a7258;
-  --text-1: var(--black);
-  --text-2: #343C40;
-  --text-3: var(--gray);
-  --text-link: var(--blue);
-  --bg-surface: #FFFFFF;
-}
-
-[data-theme="Eggshell"] {
-  color-scheme: light;
-  --theme-color: #faebd7;
-  --pair-color:  var(--black);
-  --text-1: var(--black);
-  --text-2: #343C40;
-  --text-3: var(--gray);
-  --text-link: var(--blue);
-  --bg-surface: #faf9f6;
-}
-
-[data-theme="NavyPink"] {
-  color-scheme: light;
-  --theme-color:  #fad6ea;
-  --pair-color: #254c95;
-    --text-1: var(--black);
-  --text-2: #343C40;
-  --text-3: var(--gray);
-  --text-link: var(--blue);
-  --bg-surface: #f9f9f9;
-}
-[data-theme="slate"] {
-  color-scheme: dark;
-  --theme-color: #1a2030;
-  --pair-color:  #d8b904;
-  --text-1: #edf2f7;
-  --text-2: #c8d5e3;
-  --text-3: #8fa4b8;
-  --text-link: #d8b904;
-  --bg-surface: #242d42;
-}
-
-[data-theme="forest"] {
-  color-scheme: dark;
-  --theme-color: #162620;
-  --pair-color:  #f0f0f0;
-  --text-1: #FFFFFF;
-  --text-2: #E0E0E0;
-  --text-3: #C0C6CA;
-  --text-link: #7eb8e6;
-  --bg-surface: #1e3228;
-}
-
-[data-theme="wine"] {
-  color-scheme: dark;
-  --theme-color: #1c1018;
-  --pair-color:  #f0f0f0;
-  --text-1: #fdf2f8;
-  --text-2: #e8c8d8;
-  --text-3: #b090a0;
-  --text-link: #d8b904;
-  --bg-surface: #3d263c;
 }

@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store'
 
-export type Theme = 'black' | 'slate' | 'forest' | 'wine' | 'white' | 'mint' | 'Eggshell' | 'NavyPink'  // extend this union when adding themes
+export type Theme = 'black' | 'white'
 
 export interface ThemeDef {
   name: Theme
@@ -8,40 +8,60 @@ export interface ThemeDef {
 }
 
 export const THEMES: ThemeDef[] = [
-  { name: 'black',     scheme: 'dark'  },
-  { name: 'slate',    scheme: 'dark'  },
-  { name: 'forest',   scheme: 'dark'  },
-  { name: 'wine',     scheme: 'dark'  },
-  { name: 'white',    scheme: 'light' },
-  { name: 'mint',     scheme: 'light' },
-  { name: 'Eggshell',   scheme: 'light' },
-  { name: 'NavyPink', scheme: 'light' },
+  { name: 'black', scheme: 'dark' },
+  { name: 'white', scheme: 'light' },
 ]
+
+const STORAGE_KEY = 'theme'
+
+function readStored(): Theme | null {
+  try {
+    const v = localStorage.getItem(STORAGE_KEY)
+    return v === 'black' || v === 'white' ? v : null
+  } catch {
+    return null
+  }
+}
+
 function getDefaultTheme(): Theme {
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-  const scheme = prefersDark ? 'dark' : 'light'
-  const candidates = THEMES.filter(t => t.scheme === scheme)
-  if (candidates.length === 0) return 'black'
-  return candidates[Math.floor(Math.random() * candidates.length)].name
+  const stored = readStored()
+  if (stored) return stored
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'black' : 'white'
 }
 
 function createThemeStore() {
   const { subscribe, set } = writable<Theme>('black')
+  let current: Theme = 'black'
 
-  function apply(t: Theme) {
+  function apply(t: Theme, persist = true) {
+    current = t
     document.documentElement.dataset.theme = t
-    const def = THEMES.find(x => x.name === t)
+    const def = THEMES.find((x) => x.name === t)
     if (def) document.documentElement.dataset.scheme = def.scheme
     set(t)
+    if (persist) {
+      try {
+        localStorage.setItem(STORAGE_KEY, t)
+      } catch {
+        /* storage unavailable */
+      }
+    }
   }
 
   return {
     subscribe,
     set: apply,
-    init() { apply(getDefaultTheme()) },
-    cycle(current: Theme) {
-      const idx = THEMES.findIndex(t => t.name === current)
-      apply(THEMES[(idx + 1) % THEMES.length].name)
+    init() {
+      apply(getDefaultTheme(), false)
+      // Follow the OS until the visitor picks a theme themselves.
+      window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .addEventListener('change', (e) => {
+          if (!readStored()) apply(e.matches ? 'black' : 'white', false)
+        })
+    },
+    toggle() {
+      apply(current === 'black' ? 'white' : 'black')
     },
   }
 }

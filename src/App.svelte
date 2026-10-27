@@ -11,10 +11,9 @@
   const lastUpdated = __LAST_UPDATED__;
 </script>
 
-<ThemeToggler />
 <div class="page flex flex-col gap-y-3 justify-center">
   <FourStitches />
-  <header class="flex flex-wrap items-center gap-y-1 font-semibold w-full pr-[5rem]">
+  <header class="flex flex-wrap items-center gap-x-3 gap-y-1 font-semibold w-full">
     <h1 class="text-[1.4rem] sm:text-[2rem] font-semibold leading-tight">
       Sam (Yu-Te) Lee's Portfolio
     </h1>
@@ -22,6 +21,7 @@
       class="ml-auto text-xs sm:text-sm not-italic font-normal"
       style="color: var(--text-3)">Last Updated: {lastUpdated}</span
     >
+    <ThemeToggler />
   </header>
 
   <!-- Add SEO-friendly content with target keywords -->
