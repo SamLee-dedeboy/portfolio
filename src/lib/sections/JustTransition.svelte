@@ -4,7 +4,7 @@
 
 <ExpandableProject
   imageSrc="JT.png"
-  imageAlt="Just Transition - TEMP MARKER"
+  imageAlt="Just Transitions in the Delta"
   title="Just Transition in the Delta"
   description="A cross-campus research team Investigating adaptation strategies in the Sacramento-San Joaquin Delta under conditions of drought, salinity and sea-level rise"
   link="https://delta-just-transitions-ucdavis.hub.arcgis.com/"
@@ -62,6 +62,8 @@
             </div>
             <img
               src="bay_delta_2025.jpg"
+              loading="lazy"
+              decoding="async"
               alt="Exhibiting the Just Transition Interview Dashboard at the Bay-Delta Science Conference"
               class="max-h-[30rem] w-auto max-w-full mt-2 rounded-md object-contain sm:shrink-0"
             />
@@ -114,14 +116,18 @@
                 A hand-drawn mental model (not the same as the right one):
               </p>
               <img
-                src="hand_drawn_mm.png"
-                alt="hand drawn mental model"
+                src="hand_drawn_mm.webp"
+                alt="A hand-drawn mental model from a stakeholder interview"
+                loading="lazy"
+                decoding="async"
                 class="max-h-[15rem] w-auto max-w-full rounded-md object-contain"
               />
             </div>
             <img
-              src="mm.png"
-              alt="mental model visualization"
+              src="mm.webp"
+              alt="The mental model redrawn as an interactive visualization"
+              loading="lazy"
+              decoding="async"
               class="max-h-[30rem] w-auto max-w-full mt-2 rounded-md object-contain"
             />
           </div>
@@ -162,7 +168,13 @@
             <span class="italic mt-2" style="color: var(--text-2)">
               Interface Screenshot:
             </span>
-            <img src="cadelta.png" alt="CaDelta" class="rounded-md" />
+            <img
+              src="cadelta.webp"
+              alt="Screenshot of the CaDelta interface"
+              loading="lazy"
+              decoding="async"
+              class="rounded-md"
+            />
           </div>
         </div>
       </div>

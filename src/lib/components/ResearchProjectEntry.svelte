@@ -72,7 +72,9 @@
     >
       <img
         src={teaserSrc}
-        alt="teaser"
+        alt="Teaser image for {title}"
+        loading="lazy"
+        decoding="async"
         class="teaser transition-all duration-200 ease-out {teaserImgClass}"
       />
     </button>

@@ -3,6 +3,7 @@
   export let top = 0;
   export let left = 0;
   let showVisPhoto = false;
+  let showBayDeltaPhotos = false;
   /** define section coordinates */
   // const top = -1000
   // const left = 380
@@ -64,12 +65,17 @@
     >
       <img
         src="profile_image.jpg"
-        alt="profile"
+        alt="Sam Yu-Te Lee"
+        width="160"
+        height="160"
+        fetchpriority="high"
         class="profile-image-primary w-32 h-32 sm:w-40 sm:h-40"
       />
       <img
         src="profile_image_hidden.jpg"
-        alt="profile"
+        alt="Sam Yu-Te Lee"
+        width="160"
+        height="160"
         class="profile-image-hidden hidden w-32 h-32 sm:w-40 sm:h-40"
       />
       <!-- <span class="whitespace-nowrap text-sm text-gray-400 italic"
@@ -137,28 +143,56 @@
             <!-- (Currently working as a UX Research Intern at Microsoft. Welcome to
             Connect!) -->
             <p>Recent News:</p>
-            <p class="ml-2">
-              <span class="text-sm" style="color: var(--text-3)">
-                [Sep 2026]
-              </span>
-              I will be presenting in the special session
-              <span class="italic" style="color: var(--text-3)"
-                >Just Transitions in the Delta: Co-designing, modeling,
-                visualizing and assessing salinity and climate adaptation
-                scenarios</span
-              >
-              at the
-              <a
-                target="_blank"
-                href="https://www.baydeltascienceconference.com/"
-                >Bay-Delta Science Conference</a
-              >, where we will also host an
-              <a
-                target="_blank"
-                href="https://www.baydeltascienceconference.com/abstracts/art-sessions"
-                >artwork exhibition</a
-              >.
-            </p>
+            <div class="ml-2">
+              <p>
+                <span class="text-sm" style="color: var(--text-3)">
+                  [Sep 2026]
+                </span>
+                I presented in the special session
+                <span class="italic" style="color: var(--text-3)"
+                  >Just Transitions in the Delta: Co-designing, modeling,
+                  visualizing and assessing salinity and climate adaptation
+                  scenarios</span
+                >
+                at the
+                <a
+                  target="_blank"
+                  href="https://www.baydeltascienceconference.com/"
+                  >Bay-Delta Science Conference</a
+                >, where we also hosted an
+                <a
+                  target="_blank"
+                  href="https://www.baydeltascienceconference.com/abstracts/art-sessions"
+                  >artwork exhibition</a
+                >.
+                <button
+                  type="button"
+                  class="vis-photo-toggle"
+                  on:click={() => (showBayDeltaPhotos = !showBayDeltaPhotos)}
+                >
+                  {showBayDeltaPhotos ? "[hide photos]" : "[photos]"}
+                </button>
+              </p>
+              {#if showBayDeltaPhotos}
+                <div class="mt-1 flex flex-wrap gap-2">
+                  <img
+                    src="bay_delta_2026_talk.jpg"
+                    alt="Presenting Co-designing Salinity Visualization for Public Science Communication at the 2026 Bay-Delta Science Conference"
+                    class="w-full sm:w-[23.5rem] h-auto rounded-md object-contain"
+                  />
+                  <img
+                    src="bay_delta_2026_exhibit.jpg"
+                    alt="The Just Transitions in the Delta exhibition: poster, touch display and scenario stations"
+                    class="w-full sm:w-[23.5rem] h-auto rounded-md object-contain"
+                  />
+                  <img
+                    src="bay_delta_2026_visitors.jpg"
+                    alt="Visitors exploring the adaptation scenarios at the exhibition"
+                    class="w-full sm:w-[23.5rem] h-auto rounded-md object-contain"
+                  />
+                </div>
+              {/if}
+            </div>
             <p class="ml-2">
               <span class="text-sm" style="color: var(--text-3)">
                 [Jun 2026]
@@ -206,7 +240,7 @@
           <a href="https://www.linkedin.com/in/sam-ytlee" target="_blank"
             ><img
               src="linkedin.svg"
-              alt="linkedin"
+              alt="LinkedIn"
               class="bg-white outline outline-1 outline-gray-300 shadow-md rounded-sm p-1 hover:bg-gray-200"
             /></a
           >
@@ -214,7 +248,7 @@
         <a href="https://github.com/SamLee-dedeboy" target="_blank"
           ><img
             src="github.svg"
-            alt="github"
+            alt="GitHub"
             class="bg-white outline outline-1 outline-gray-300 shadow-md rounded-sm p-1 hover:bg-gray-200"
           /></a
         >

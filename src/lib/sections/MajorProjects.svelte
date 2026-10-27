@@ -85,7 +85,7 @@
   <div class="flex flex-col gap-y-4">
     <div class="year-divider">2026</div>
     <ResearchProjectEntry
-      teaser_path="AmbiguityVLM.png"
+      teaser_path="AmbiguityVLM.webp"
       title="Detecting and Understanding Ambiguity in Visualizations with Role-Playing Vision Language Model Interpretations"
       note={notes.ambiguity}
       authors={[
@@ -118,7 +118,7 @@
       ]}
     />
     <ResearchProjectEntry
-      teaser_path="CoworkerWheel.png"
+      teaser_path="CoworkerWheel.webp"
       teaser_wide_path="CoworkerWheel-wide.jpg"
       title="What Makes a Great Co-Worker in an AI-Native Workplace?"
       note={notes.coworker}
@@ -137,7 +137,7 @@
       links={[["PDF", "https://arxiv.org/abs/2609.13786"]]}
     />
     <ResearchProjectEntry
-      teaser_path="VoiceInterface.png"
+      teaser_path="VoiceInterface.webp"
       title="A Design Study on Voice-based Interaction for Immersive Network Visualization and Analysis"
       note={notes.voice}
       authors={[
@@ -147,7 +147,7 @@
         "David Bauer",
         "Kwan-Liu Ma",
       ]}
-      publication="To appear in IEEE ISMAR, 2026"
+      publication="IEEE ISMAR, 2026"
       links={[
         ["PDF", "https://arxiv.org/abs/2607.26526"],
         ["Code", "https://github.com/sarahayu/VR-Network-Visualization"],
@@ -155,7 +155,7 @@
       ]}
     />
     <ResearchProjectEntry
-      teaser_path="VibeVisualizing.png"
+      teaser_path="VibeVisualizing.webp"
       title="Vibe Visualizing: How Visualization Novices Try (and Fail) to Generate and Interpret Visualizations with Conversational AI"
       note={notes.vibeViz}
       authors={[
@@ -194,7 +194,7 @@
     />
     <div class="year-divider">2025</div>
     <ResearchProjectEntry
-      teaser_path="VizCopilot.png"
+      teaser_path="VizCopilot.webp"
       teaser_wide_path="VizCopilot-wide.jpg"
       title="VizCopilot: Fostering Appropriate Reliance on Enterprise Chatbots with Context Visualization"
       note={notes.vizCopilot}
@@ -214,7 +214,7 @@
       ]}
     />
     <ResearchProjectEntry
-      teaser_path="VIDEE.png"
+      teaser_path="VIDEE.webp"
       teaser_wide_path="VIDEE-wide.jpg"
       title="VIDEE: Visual and Interactive Decomposition, Execution, and Evaluation of Text Analytics with Intelligent Agents "
       note={notes.videe}
@@ -286,7 +286,7 @@
     />
     <div class="year-divider">2023</div>
     <ResearchProjectEntry
-      teaser_path="nova.png"
+      teaser_path="nova.webp"
       last_in_group={true}
       title="NOVA: A visual interface for assessing polarizing media coverage"
       note={notes.nova}
@@ -353,7 +353,9 @@
           >
             <img
               src="htmdoc.png"
-              alt="htmdoc"
+              alt="Screenshot of htmdoc rendering a document"
+              loading="lazy"
+              decoding="async"
               class="w-full sm:w-[18rem] h-auto rounded-md object-contain"
             />
           </a>
@@ -403,8 +405,10 @@
             class="shrink-0"
           >
             <img
-              src="VectorUI.png"
+              src="VectorUI.webp"
               alt="VectorUI — text flowing around an SVG shape, a curve slider, and a PathFlow menu"
+              loading="lazy"
+              decoding="async"
               class="w-full sm:w-[18rem] h-auto rounded-md object-contain"
             />
           </a>

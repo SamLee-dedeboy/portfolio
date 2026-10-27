@@ -21,6 +21,8 @@
         <img
           src={imageSrc}
           alt={imageAlt}
+          loading="lazy"
+          decoding="async"
           class="w-full sm:w-[18rem] h-auto rounded-md object-contain"
         />
       </a>
@@ -28,6 +30,8 @@
       <img
         src={imageSrc}
         alt={imageAlt}
+        loading="lazy"
+        decoding="async"
         class="h-[6rem] w-auto rounded-md object-contain shrink-0"
       />
     {/if}
