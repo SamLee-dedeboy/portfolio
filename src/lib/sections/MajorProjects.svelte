@@ -5,6 +5,8 @@
   import COEQWAL from "./COEQWAL.svelte";
 
   const notes: Record<string, string> = {
+    ambiguity:
+      "A chart can support more than one reasonable takeaway, and some of them contradict what its author meant — but finding that out means testing with real audiences, which is slow and hard to scale. We ask whether persona-conditioned vision language models can serve as a first pass: have them read a chart the way different kinds of people would, compare what they conclude, and summarize the disagreement as an ambiguity profile the author can inspect. The profiles are a diagnostic rather than a prediction of real readers — a way to treat the range of plausible interpretations as something to design for.",
     vibeGuide: "As coding agents take over more implementation, developers risk losing the project understanding they need to question changes and remain responsible for the result. We built Vibe-GUIDE around a live, manipulable graph so people can follow how a project evolves and keep oversight grounded in the software itself.",
     coworker: "As AI becomes part of everyday teamwork, we need to ask what makes someone, or something, genuinely good to work with. We explore the AI-native workplace and responsible co-working, where useful collaboration still depends on human judgment, accountability, care, and making sure AI-assisted work does not create hidden costs for others.",
     voice: "Immersive network analysis offers plenty of visual space, but conventional menus can make authoring feel cumbersome and pull attention away from the data. We explored voice-primary interaction as a more fluid way to express complex changes, while recognizing that discoverability and ambiguity still need thoughtful support.",
@@ -82,6 +84,20 @@
   <h2 class="section-header">Publications</h2>
   <div class="flex flex-col gap-y-4">
     <div class="year-divider">2026</div>
+    <ResearchProjectEntry
+      teaser_path="AmbiguityVLM.png"
+      title="Detecting and Understanding Ambiguity in Visualizations with Role-Playing Vision Language Model Interpretations"
+      note={notes.ambiguity}
+      authors={[
+        "Garrick Chan",
+        "Yun-Hsin Kuo",
+        "Sam Yu-Te Lee",
+        "Yinuo Tang",
+        "Kwan-Liu Ma",
+      ]}
+      publication="Preprint, Oct 2026"
+      links={[["PDF", "https://arxiv.org/abs/2610.33997"]]}
+    />
     <ResearchProjectEntry
       teaser_path="VibeGUIDE.jpg"
       teaser_wide_path="VibeGUIDE-wide.jpg"
